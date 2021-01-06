@@ -18,8 +18,6 @@ function nextDay() {
   else {
     if ($currentDay === 5) {
       currentState.set("endOfYear")
-      currentYear.update(value => value += 1);
-      currentDay.set(1);
     } else {
       currentState.set("choice")
       currentDay.update(value => value += 1)
@@ -35,4 +33,10 @@ function nextDay() {
 <p>{effect}</p>
 {/each}
 
-<NextButton parentFunction={nextDay}>Volgende dag</NextButton>
+<NextButton parentFunction={nextDay}>
+  {#if $currentDay >= 5}
+    Beeindig jaar 1
+  {:else}
+    Volgende dag
+  {/if}
+</NextButton>
