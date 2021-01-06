@@ -83,6 +83,6 @@ button {
 
 button:focus, button:hover {
   background-color: var(--color-green);
-  transition: transform 0.1s;
+  transition: all 0.1s;
   transform: scale(1.1);
 }

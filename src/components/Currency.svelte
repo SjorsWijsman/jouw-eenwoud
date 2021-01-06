@@ -2,7 +2,7 @@
 import { currency } from "../data/appData.js";
 </script>
 
-<style media="screen">
+<style>
   p {
     margin: 0;
   }

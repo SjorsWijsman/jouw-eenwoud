@@ -1,5 +1,6 @@
 <script>
 import Choices from "./components/Choices.svelte";
+import ChoiceResult from "./components/ChoiceResult.svelte";
 import CollectionButton from "./components/CollectionButton.svelte";
 import Currency from "./components/Currency.svelte";
 import YearCounter from "./components/YearCounter.svelte";
@@ -13,6 +14,7 @@ import { currentState } from "./data/appData.js";
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
   }
 </style>
 
@@ -24,7 +26,7 @@ import { currentState } from "./data/appData.js";
   {#if $currentState === "choice"}
     <Choices/>
   {:else if $currentState === "choiceResult"}
-    <p>Choice Result component</p>
+    <ChoiceResult/>
   {:else if $currentState === "endOfYear"}
     <p>End of year component</p>
   {:else if $currentState === "gameOver"}

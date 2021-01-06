@@ -1,8 +1,10 @@
 <script>
 import ChoiceButton from "./ChoiceButton.svelte";
 import { choices } from "../data/choices.js";
-import { currentChoice } from "../data/appData.js";
-import { currentDay } from "../data/appData.js";
+import {
+  currentChoice,
+  currentDay,
+} from "../data/appData.js";
 
 currentDay.subscribe(value => {
   randomChoice()
