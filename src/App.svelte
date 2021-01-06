@@ -6,7 +6,7 @@ import CollectionButton from "./components/CollectionButton.svelte";
 import Currency from "./components/Currency.svelte";
 import YearCounter from "./components/YearCounter.svelte";
 import DayCounter from "./components/DayCounter.svelte";
-import { currentState } from "./data/appData.js";
+import { currentState, currentYear } from "./data/appData.js";
 </script>
 
 <style>
@@ -21,7 +21,9 @@ import { currentState } from "./data/appData.js";
 
 <header>
   <Currency/>
-  <CollectionButton/>
+  {#if $currentYear > 1}
+    <CollectionButton/>
+  {/if}
 </header>
 <main>
   {#if $currentState === "choice"}
