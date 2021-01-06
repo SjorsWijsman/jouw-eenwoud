@@ -9,16 +9,19 @@ export let choice;
 let choiceEffect = $currentChoice.choices[choice];
 
 function makeChoice() {
-  // currency aanpassen
   for (const effect of choiceEffect) {
     $currency[effect[0]] += effect[1]
   }
-  // volgende dag
   nextDay()
 }
 
 function nextDay() {
-  currentDay.update(value => value += 1)
+  if ($currentDay === 5) {
+    currentYear.update(value => value += 1);
+    currentDay.set(1);
+  } else {
+    currentDay.update(value => value += 1)
+  }
 }
 </script>
 
@@ -32,7 +35,7 @@ function nextDay() {
 
   .choiceButton button {
     min-width: 10rem;
-    
+
   }
 </style>
 

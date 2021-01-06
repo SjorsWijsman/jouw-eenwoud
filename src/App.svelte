@@ -3,6 +3,7 @@ import Choices from "./components/Choices.svelte";
 import CollectionButton from "./components/CollectionButton.svelte";
 import Currency from "./components/Currency.svelte";
 import YearCounter from "./components/YearCounter.svelte";
+import DayCounter from "./components/DayCounter.svelte";
 import { currentState } from "./data/appData.js";
 </script>
 
@@ -32,4 +33,5 @@ import { currentState } from "./data/appData.js";
 </main>
 <footer>
   <YearCounter/>
+  <DayCounter/>
 </footer>
