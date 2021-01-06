@@ -7,6 +7,7 @@ import { currentDay } from "../data/appData.js";
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100px;
 }
 
 .dot {

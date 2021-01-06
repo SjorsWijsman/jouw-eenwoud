@@ -9,5 +9,8 @@ function nextYear() {
 }
 </script>
 
-<h1>Einde van jaar {$currentYear}</h1>
+
+<div class="text">
+  <h1>Einde van jaar {$currentYear}</h1>
+</div>
 <NextButton parentFunction={nextYear}>Begin jaar {$currentYear + 1}</NextButton>

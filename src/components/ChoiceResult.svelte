@@ -26,9 +26,11 @@ function nextDay() {
 }
 </script>
 
-<h1>{$currentChoice.title}</h1>
-<p>{$currentChoice.choices[$choiceMade].resultText}</p>
 
+<div class="text">
+  <h1>{$currentChoice.title}</h1>
+  <p>{$currentChoice.choices[$choiceMade].resultText}</p>
+</div>
 {#each choiceEffect as effect}
 <p>{effect}</p>
 {/each}

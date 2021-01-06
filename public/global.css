@@ -29,24 +29,10 @@ html {
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background-color: var(--color-background);
-  max-width: 35rem;
-  margin: 1rem auto;
+  margin: 0 auto;
+  min-height: 100%;
 }
-
-body > * {
-  padding: 1.2rem;
-}
-
-/* @media only screen and (max-width: 70rem) {
-  body {
-	  padding: 0.8rem;
-    padding-bottom: 3rem;
-    height: auto;
-  }
-} */
 
 h1 {
   font-family: 'Merriweather', serif;

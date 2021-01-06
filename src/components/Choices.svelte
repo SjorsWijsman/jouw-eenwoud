@@ -24,8 +24,10 @@ function randomChoice() {
   }
 </style>
 
-<h1>{$currentChoice.title}</h1>
-<p>{$currentChoice.description}</p>
+<div class="text">
+  <h1>{$currentChoice.title}</h1>
+  <p>{$currentChoice.description}</p>
+</div>
 <div class="choices">
   {#each Object.keys($currentChoice.choices) as choice}
     <ChoiceButton {choice}/>
