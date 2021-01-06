@@ -9,6 +9,8 @@ import {
   choiceMade,
 } from "../data/appData.js";
 
+const choiceEffect = $currentChoice.choices[$choiceMade].effect;
+
 function nextDay() {
   if ($currency.bomen <= 0) {
     currentState.set("gameOver")
@@ -28,4 +30,9 @@ function nextDay() {
 
 <h1>{$currentChoice.title}</h1>
 <p>{$currentChoice.choices[$choiceMade].resultText}</p>
+
+{#each choiceEffect as effect}
+<p>{effect}</p>
+{/each}
+
 <NextButton parentFunction={nextDay}>Volgende dag</NextButton>
