@@ -70,6 +70,7 @@ p {
 }
 
 button {
+  user-select: none;
   padding: 1rem;
   font-family: 'Merriweather', serif;
   color: var(--color-white);
@@ -77,6 +78,7 @@ button {
   border: none;
   border-radius: 0.5rem;
   outline: none;
+  cursor: pointer;
 }
 
 button:focus, button:hover {
