@@ -710,7 +710,7 @@ var app = (function () {
     }
 
     function create_fragment$1(ctx) {
-    	let h2;
+    	let h1;
     	let t0_value = /*$currentChoice*/ ctx[0].title + "";
     	let t0;
     	let t1;
@@ -734,7 +734,7 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			h2 = element("h2");
+    			h1 = element("h1");
     			t0 = text(t0_value);
     			t1 = space();
     			p = element("p");
@@ -746,7 +746,7 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(h2, file$1, 24, 0, 514);
+    			add_location(h1, file$1, 24, 0, 514);
     			add_location(p, file$1, 25, 0, 546);
     			attr_dev(div, "class", "choices svelte-9w83o9");
     			add_location(div, file$1, 26, 0, 582);
@@ -755,8 +755,8 @@ var app = (function () {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, h2, anchor);
-    			append_dev(h2, t0);
+    			insert_dev(target, h1, anchor);
+    			append_dev(h1, t0);
     			insert_dev(target, t1, anchor);
     			insert_dev(target, p, anchor);
     			append_dev(p, t2);
@@ -820,7 +820,7 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(h2);
+    			if (detaching) detach_dev(h1);
     			if (detaching) detach_dev(t1);
     			if (detaching) detach_dev(p);
     			if (detaching) detach_dev(t3);
@@ -1118,37 +1118,42 @@ var app = (function () {
     const file$4 = "src/components/YearCounter.svelte";
 
     function create_fragment$4(ctx) {
-    	let p0;
+    	let div;
+    	let h2;
     	let t0;
     	let t1;
     	let t2;
-    	let p1;
+    	let p;
     	let t3;
     	let t4;
 
     	const block = {
     		c: function create() {
-    			p0 = element("p");
+    			div = element("div");
+    			h2 = element("h2");
     			t0 = text("Jaar: ");
     			t1 = text(/*$currentYear*/ ctx[0]);
     			t2 = space();
-    			p1 = element("p");
+    			p = element("p");
     			t3 = text("Dag: ");
     			t4 = text(/*$currentDay*/ ctx[1]);
-    			add_location(p0, file$4, 5, 0, 119);
-    			add_location(p1, file$4, 6, 0, 147);
+    			add_location(h2, file$4, 14, 2, 271);
+    			add_location(p, file$4, 15, 2, 303);
+    			attr_dev(div, "class", "currentMoment svelte-12pam2r");
+    			add_location(div, file$4, 13, 0, 241);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, p0, anchor);
-    			append_dev(p0, t0);
-    			append_dev(p0, t1);
-    			insert_dev(target, t2, anchor);
-    			insert_dev(target, p1, anchor);
-    			append_dev(p1, t3);
-    			append_dev(p1, t4);
+    			insert_dev(target, div, anchor);
+    			append_dev(div, h2);
+    			append_dev(h2, t0);
+    			append_dev(h2, t1);
+    			append_dev(div, t2);
+    			append_dev(div, p);
+    			append_dev(p, t3);
+    			append_dev(p, t4);
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*$currentYear*/ 1) set_data_dev(t1, /*$currentYear*/ ctx[0]);
@@ -1157,9 +1162,7 @@ var app = (function () {
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(p0);
-    			if (detaching) detach_dev(t2);
-    			if (detaching) detach_dev(p1);
+    			if (detaching) detach_dev(div);
     		}
     	};
 
