@@ -31,8 +31,8 @@ function nextDay() {
   }
 
   .choiceButton button {
-    width: 10rem;
-    height: 2rem;
+    min-width: 10rem;
+    
   }
 </style>
 

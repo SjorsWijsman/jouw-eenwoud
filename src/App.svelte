@@ -3,6 +3,7 @@ import Choices from "./components/Choices.svelte";
 import CollectionButton from "./components/CollectionButton.svelte";
 import Currency from "./components/Currency.svelte";
 import YearCounter from "./components/YearCounter.svelte";
+import { currentState } from "./data/appData.js";
 </script>
 
 <style>
@@ -19,7 +20,15 @@ import YearCounter from "./components/YearCounter.svelte";
   <CollectionButton/>
 </header>
 <main>
-  <Choices/>
+  {#if $currentState === "choice"}
+    <Choices/>
+  {:else if $currentState === "choiceResult"}
+    <p>Choice Result component</p>
+  {:else if $currentState === "endOfYear"}
+    <p>End of year component</p>
+  {:else if $currentState === "gameOver"}
+    <p>Game Over component</p>
+  {/if}
 </main>
 <footer>
   <YearCounter/>
