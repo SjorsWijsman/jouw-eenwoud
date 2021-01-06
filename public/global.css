@@ -1,11 +1,19 @@
 html {
-  --color-text: #28381F;
-  --color-background: #FFFFFF;
+  --color-green-light: #81A18F;
+  --color-green: #465F35;
+  --color-green-dark: #28381F;
+  --color-yellow: #F0C253;
+  --color-yellow-dark: #8C702C;
+  --color-gray: #C8D8DF;
+  --color-gray-dark: #415963;
+  --color-red: #C14444;
+  --color-white: #FFFFFF;
+  --color-text: var(--color-gray-dark);
+  --color-background: var(--color-white);
   --breakpoint-tablet: 70rem;
   font-size: calc(60% + 0.8vmin);
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
-  background-color: #E8F6EE
 }
 
 * {
@@ -42,17 +50,18 @@ body > * {
 
 h1 {
   font-family: 'Merriweather', serif;
-  font-size: calc(2rem + 1vmin);
+  font-size: calc(2rem + 0.3vmin);
   font-weight: 700;
   text-align: center;
+  margin-bottom: 1rem;
 }
 
 h2 {
   font-family: 'Merriweather', serif;
   font-weight: 400;
-  font-size: calc(1.8rem);
-  font-style: italic;
-  margin-bottom: 0.8rem;
+  font-size: calc(1.2rem);
+  color: var(--color-yellow-dark);
+  margin-bottom: 1rem;
   opacity: 0.7;
 }
 

@@ -22,7 +22,7 @@ function randomChoice() {
   }
 </style>
 
-<h2>{$currentChoice.title}</h2>
+<h1>{$currentChoice.title}</h1>
 <p>{$currentChoice.description}</p>
 <div class="choices">
   {#each Object.keys($currentChoice.choices) as choice}
