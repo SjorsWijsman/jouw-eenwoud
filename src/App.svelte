@@ -12,7 +12,7 @@ import { currentState, currentYear } from "./data/appData.js";
 <style>
   * {
     --max-content-width: 35rem;
-    --height-header: 6rem;
+    --height-header: 5rem;
     --height-footer: 7rem;
   }
 

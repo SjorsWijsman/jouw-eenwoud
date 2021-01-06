@@ -26,13 +26,33 @@ function nextDay() {
 }
 </script>
 
+<style>
+.effects {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.effects img {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 0.4rem;
+}
+
+.negative {
+  color: var(--color-red);
+}
+</style>
 
 <div class="text">
   <h1>{$currentChoice.title}</h1>
   <p>{$currentChoice.choices[$choiceMade].resultText}</p>
 </div>
 {#each choiceEffect as effect}
-<p>{effect}</p>
+  <p class="effects" class:negative="{effect[1] < 0}">
+    <img src={"./resources/icons/" + effect[0] + ".svg"} alt="munten icon">
+    {effect[1]}
+  </p>
 {/each}
 
 <NextButton parentFunction={nextDay}>
