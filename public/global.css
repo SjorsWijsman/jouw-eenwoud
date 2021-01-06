@@ -68,3 +68,21 @@ h2 {
 p {
   margin-bottom: 0.8rem;
 }
+
+button {
+  user-select: none;
+  padding: 1rem;
+  font-family: 'Merriweather', serif;
+  color: var(--color-white);
+  background-color: var(--color-green-light);
+  border: none;
+  border-radius: 0.5rem;
+  outline: none;
+  cursor: pointer;
+}
+
+button:focus, button:hover {
+  background-color: var(--color-green);
+  transition: all 0.1s;
+  transform: scale(1.1);
+}

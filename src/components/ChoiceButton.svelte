@@ -1,28 +1,26 @@
 <script>
-import { currentChoice } from "../data/appData.js";
-import { currency } from "../data/appData.js";
-import { currentYear } from "../data/appData.js";
-import { currentDay } from "../data/appData.js";
+import {
+  currentState,
+  currentChoice,
+  currency,
+  choiceMade,
+} from "../data/appData.js";
 
 export let choice;
 
-let choiceEffect = $currentChoice.choices[choice];
+const choiceEffect = $currentChoice.choices[choice].effect;
 
 function makeChoice() {
-  // currency aanpassen
   for (const effect of choiceEffect) {
     $currency[effect[0]] += effect[1]
   }
-  // volgende dag
-  nextDay()
+  choiceMade.set(choice);
+  currentState.set("choiceResult");
 }
 
-function nextDay() {
-  currentDay.update(value => value += 1)
-}
 </script>
 
-<style media="screen">
+<style>
   .choiceButton {
     display: flex;
     flex-direction: column;
@@ -31,8 +29,7 @@ function nextDay() {
   }
 
   .choiceButton button {
-    width: 10rem;
-    height: 2rem;
+    min-width: 10rem;
   }
 </style>
 
