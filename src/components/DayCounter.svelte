@@ -7,12 +7,24 @@ import { currentDay } from "../data/appData.js";
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  height: 20px;
+  width: 100px;
+}
+
+.dotcontainer {
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dot {
+  transition: all .2s;
   height: 10px;
   width: 10px;
-  margin: 5px;
   background-color: var(--color-gray);
   border-radius: 50%;
   display: inline-block;
@@ -27,7 +39,9 @@ import { currentDay } from "../data/appData.js";
 </style>
 
 <div class="daycounter">
-  {#each Array(5) as _, i}
-    <span class="dot" class:current="{i === $currentDay-1}"></span>
-  {/each}
+    {#each Array(5) as _, i}
+      <div class="dotcontainer">
+        <span class="dot" class:current="{i === $currentDay-1}"></span>
+      </div>
+    {/each}
 </div>

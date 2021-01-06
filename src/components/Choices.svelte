@@ -21,11 +21,14 @@ function randomChoice() {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: flex-end;
   }
 </style>
 
-<h1>{$currentChoice.title}</h1>
-<p>{$currentChoice.description}</p>
+<div class="text">
+  <h1>{$currentChoice.title}</h1>
+  <p>{$currentChoice.description}</p>
+</div>
 <div class="choices">
   {#each Object.keys($currentChoice.choices) as choice}
     <ChoiceButton {choice}/>
