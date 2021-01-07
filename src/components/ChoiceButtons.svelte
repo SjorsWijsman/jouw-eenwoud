@@ -6,12 +6,8 @@ import {
   choiceMade,
 } from "../data/appData.js";
 
-export let choice;
-
-const choiceEffect = $currentChoice.choices[choice].effect;
-
-function makeChoice() {
-  for (const effect of choiceEffect) {
+function makeChoice(choice) {
+  for (const effect of $currentChoice.choices[choice].effect) {
     currency.update(value => {
       value[effect[0]] += effect[1]
       return {...value};
@@ -20,10 +16,16 @@ function makeChoice() {
   choiceMade.set(choice);
   currentState.set("choiceResult");
 }
-
 </script>
 
 <style>
+  .choices {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
   .choiceButton {
     display: flex;
     flex-direction: column;
@@ -51,12 +53,16 @@ function makeChoice() {
   }
 </style>
 
-<div class="choiceButton">
-  {#each choiceEffect as effect}
-  <p class:negative="{effect[1] < 0}">
-    <img src={"./resources/icons/" + effect[0] + ".svg"} alt="munten icon">
-    {effect[1]}
-  </p>
+<div class="choices">
+  {#each Object.keys($currentChoice.choices) as choice}
+    <div class="choiceButton">
+      {#each $currentChoice.choices[choice].effect as effect}
+      <p class:negative="{effect[1] < 0}">
+        <img src={"./resources/icons/" + effect[0] + ".svg"} alt="munten icon">
+        {effect[1]}
+      </p>
+      {/each}
+      <button type="button" name="button" on:click={() => makeChoice(choice)}>{choice}</button>
+    </div>
   {/each}
-  <button type="button" name="button" on:click={makeChoice}>{choice}</button>
 </div>

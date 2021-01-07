@@ -1,12 +1,42 @@
 <script>
-import Choices from "./components/Choices.svelte";
+import ChoiceText from "./components/ChoiceText.svelte";
+import ChoiceButtons from "./components/ChoiceButtons.svelte";
 import ChoiceResult from "./components/ChoiceResult.svelte";
+import NextButton from "./components/NextButton.svelte";
 import EndOfYear from "./components/EndOfYear.svelte";
 import CollectionButton from "./components/CollectionButton.svelte";
 import Currency from "./components/Currency.svelte";
 import YearCounter from "./components/YearCounter.svelte";
 import DayCounter from "./components/DayCounter.svelte";
-import { currentState, currentYear } from "./data/appData.js";
+import Trees from "./components/Trees.svelte";
+import GameOver from "./components/GameOver.svelte";
+import {
+  currency,
+  currentState,
+  currentYear,
+  currentDay,
+  resetData,
+} from "./data/appData.js";
+
+function nextDay() {
+  if ($currency.bomen <= 0) {
+    currentState.set("gameOver")
+  }
+  else {
+    if ($currentDay === 5) {
+      currentState.set("endOfYear")
+    } else {
+      currentState.set("choice")
+      currentDay.update(value => value += 1)
+    }
+  }
+}
+
+function nextYear() {
+  currentYear.update(value => value += 1);
+  currentDay.set(1);
+  currentState.set("choice");
+}
 </script>
 
 <style>
@@ -75,13 +105,35 @@ import { currentState, currentYear } from "./data/appData.js";
 </header>
 <main>
   {#if $currentState === "choice"}
-    <Choices/>
+    <ChoiceText/>
   {:else if $currentState === "choiceResult"}
     <ChoiceResult/>
   {:else if $currentState === "endOfYear"}
     <EndOfYear/>
   {:else if $currentState === "gameOver"}
-    <p>Game Over component</p>
+    <GameOver/>
+  {/if}
+
+  <Trees/>
+
+  {#if $currentState === "choice"}
+    <ChoiceButtons/>
+  {:else if $currentState === "choiceResult"}
+    <NextButton parentFunction={nextDay}>
+      {#if $currentDay >= 5}
+        Beeindig jaar 1
+      {:else}
+        Volgende dag
+      {/if}
+    </NextButton>
+  {:else if $currentState === "endOfYear"}
+    <NextButton parentFunction={nextYear}>
+      Begin jaar {$currentYear + 1}
+    </NextButton>
+  {:else if $currentState === "gameOver"}
+    <NextButton parentFunction={resetData}>
+      Herstart het spel
+    </NextButton>
   {/if}
 </main>
 <footer>

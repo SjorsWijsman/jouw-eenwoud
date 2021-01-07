@@ -13,27 +13,62 @@ function setGridSize(trees) {
     if (i * i >= trees) break;
   }
 }
+
+let treeGridList = createTreeGridList()
+
+function createTreeGridList() {
+  const list = [];
+  for (var i = 0; i < gridSize; i++) {
+    list.push({
+      occupied: false,
+    })
+  }
+  return list;
+}
+
 </script>
 
 <style>
-  .tree-container {
-    display: grid;
-    background-color: #B9C95E;
+  .tree-grid {
+    --color-grass: #B9C95E;
+    --color-ground: #B17F4A;
+    --color-ground-dark: #936037;
+    background-color: var(--color-grass);
+    max-width: calc(var(--max-content-width) * 0.6);
+    max-height: calc(var(--max-content-width) * 0.6);
     margin: 0 auto;
+    display: grid;
     -webkit-transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg);
     -moz-transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg);
     -ms-transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg);
     -o-transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg);
-    transform:  rotateX(60deg) rotateY(0deg) rotateZ(45deg);
-    perspective: none
+    transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg);
+    perspective: none;
+  }
+
+  .tree-grid::before {
+    content: "";
+    position: absolute;
+    width: 6rem;
+    height: 100%;
+    left: 100%;
+    background-color: var(--color-ground-dark);
+    transform: skewY(45deg) translateY(calc(6rem * 0.5));
+  }
+
+  .tree-grid::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 6rem;
+    top: 100%;
+    background-color: var(--color-ground);
+    transform: skewX(45deg) translateX(calc(6rem * 0.5));
   }
 
   .tree-cell {
-    max-width: 2rem;
-    width: 100%;
-    max-height: 2rem;
-    height: 100%;
-    border: 1px solid var(--color-green);
+    max-width: 5rem;
+    max-height: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,17 +76,17 @@ function setGridSize(trees) {
 
   .tree-cell img {
     height: 200%;
-    -webkit-transform: rotate(-45deg) translateY(-1.5rem);
-    -moz-transform: rotate(-45deg) translateY(-1.5rem);
-    -ms-transform: rotate(-45deg) translateY(-1.5rem);
-    -o-transform: rotate(-45deg) translateY(-1.5rem);
-    transform:  rotate(-45deg) translateY(-1.5rem);
+    -webkit-transform: rotate(-45deg) translateY(-80%) scaleY(1.8);
+    -moz-transform: rotate(-45deg) translateY(-80%) scaleY(1.8);
+    -ms-transform: rotate(-45deg) translateY(-80%) scaleY(1.8);
+    -o-transform: rotate(-45deg) translateY(-80%) scaleY(1.8);
+    transform:  rotate(-45deg) translateY(-80%) scaleY(1.8);
   }
 </style>
 
-<div class="tree-container" style="
-  grid-template-columns: repeat({gridSize},1fr);
-  grid-template-rows: repeat({gridSize},1fr);
+<div class="tree-grid" style="
+  grid-template-columns: repeat({gridSize},minmax(0,1fr));
+  grid-template-rows: repeat({gridSize},minmax(0,1fr));
 ">
   {#each Array(gridSize * gridSize) as _, i}
     <div class="tree-cell">

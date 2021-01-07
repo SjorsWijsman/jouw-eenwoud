@@ -21,8 +21,8 @@ export function resetData() {
   currentChoice.set({})
   currency.set({
     munten: 400,
-    bomen: 40,
-  })
+    bomen: 9,
+  });
   currentYear.set(1);
   currentDay.set(1);
   choiceMade.set("");
