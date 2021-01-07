@@ -27,38 +27,47 @@ function nextDay() {
 </script>
 
 <style>
-.effects {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
-.effects img {
-  height: 1.5rem;
-  width: 1.5rem;
-  margin-right: 0.4rem;
-}
+  .effects {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 
-.negative {
-  color: var(--color-red);
-}
+  .effects img {
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: 0.4rem;
+  }
+
+  .negative {
+    color: var(--color-red);
+  }
 </style>
 
-<div class="text">
-  <h1>{$currentChoice.title}</h1>
-  <p>{$currentChoice.choices[$choiceMade].resultText}</p>
-</div>
-{#each choiceEffect as effect}
-  <p class="effects" class:negative="{effect[1] < 0}">
-    <img src={"./resources/icons/" + effect[0] + ".svg"} alt="munten icon">
-    {effect[1]}
-  </p>
-{/each}
+<div class="container">
+  <div class="text">
+    <h1>{$currentChoice.title}</h1>
+    <p>{$currentChoice.choices[$choiceMade].resultText}</p>
+  </div>
+  {#each choiceEffect as effect}
+    <p class="effects" class:negative="{effect[1] < 0}">
+      <img src={"./resources/icons/" + effect[0] + ".svg"} alt="munten icon">
+      {effect[1]}
+    </p>
+  {/each}
 
-<NextButton parentFunction={nextDay}>
-  {#if $currentDay >= 5}
-    Beeindig jaar 1
-  {:else}
-    Volgende dag
-  {/if}
-</NextButton>
+  <NextButton parentFunction={nextDay}>
+    {#if $currentDay >= 5}
+      Beeindig jaar 1
+    {:else}
+      Volgende dag
+    {/if}
+  </NextButton>
+</div>

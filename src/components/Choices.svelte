@@ -1,5 +1,6 @@
 <script>
 import ChoiceButton from "./ChoiceButton.svelte";
+import Trees from "./Trees.svelte";
 import { choices } from "../data/choices.js";
 import {
   currentChoice,
@@ -17,6 +18,13 @@ function randomChoice() {
 </script>
 
 <style>
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   .choices {
     display: flex;
     flex-direction: row;
@@ -25,12 +33,15 @@ function randomChoice() {
   }
 </style>
 
-<div class="text">
-  <h1>{$currentChoice.title}</h1>
-  <p>{$currentChoice.description}</p>
-</div>
-<div class="choices">
-  {#each Object.keys($currentChoice.choices) as choice}
-    <ChoiceButton {choice}/>
-  {/each}
+<div class="container">
+  <div class="text">
+    <h1>{$currentChoice.title}</h1>
+    <p>{$currentChoice.description}</p>
+  </div>
+  <Trees/>
+  <div class="choices">
+    {#each Object.keys($currentChoice.choices) as choice}
+      <ChoiceButton {choice}/>
+    {/each}
+  </div>
 </div>

@@ -12,7 +12,10 @@ const choiceEffect = $currentChoice.choices[choice].effect;
 
 function makeChoice() {
   for (const effect of choiceEffect) {
-    $currency[effect[0]] += effect[1]
+    currency.update(value => {
+      value[effect[0]] += effect[1]
+      return {...value};
+    })
   }
   choiceMade.set(choice);
   currentState.set("choiceResult");

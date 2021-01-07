@@ -22,7 +22,7 @@ import { currentDay } from "../data/appData.js";
 }
 
 .dot {
-  transition: all .2s;
+  transition: all .3s;
   height: 10px;
   width: 10px;
   background-color: var(--color-gray);
