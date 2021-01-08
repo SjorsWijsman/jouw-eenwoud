@@ -48,7 +48,7 @@ import { currentState, currentYear } from "./data/appData.js";
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: scroll;
+    overflow-y: scroll;
   }
 
   footer {
