@@ -1,29 +1,130 @@
 <script>
 import { currency } from "../data/appData.js";
 
-let gridSize = 3;
+const minGridSize = 4;
+
+let trees = $currency.bomen;
+let gridSize = minGridSize;
+let treeList = [];
+let treeGrid = [];
 
 currency.subscribe(value => {
-  setGridSize(value.bomen)
+  trees = value.bomen;
 });
 
-function setGridSize(trees) {
-  for (var i = 1; i < 100; i++) {
-    gridSize = i;
-    if (i * i >= trees) break;
+// Update minimum grid size according to trees amount
+$: gridSize = minimumGridSize(trees);
+// Create new grid if grid size changes
+$: treeGrid = createTreeGrid(gridSize);
+// Update tree list according to trees amount
+$: treeGrid, updateTreeList(trees);
+
+/*
+  Decides grid size according to amount of trees (gridSize * gridSize)
+*/
+function minimumGridSize(trees) {
+  for (var i = minGridSize; i < 100; i++) {
+    if (i * i >= trees) return i;
   }
 }
 
-let treeGridList = createTreeGridList()
-
-function createTreeGridList() {
+/*
+  Creates a list of unoccupied tiles according to grid size
+  and populates this list with trees from treeList
+*/
+function createTreeGrid(gridSize) {
+  console.log("Set new grid size to: " + gridSize)
   const list = [];
-  for (var i = 0; i < gridSize; i++) {
+  for (var i = 0; i < gridSize * gridSize; i++) {
     list.push({
       occupied: false,
     })
   }
   return list;
+}
+
+/*
+  Create, remove and move trees around in treesList & subsequently treesGrid
+*/
+function updateTreeList(trees) {
+  if (trees > treeList.length) {
+    moveTrees()
+    createTrees(trees - treeList.length);
+  }
+  else if (trees < treeList.length) {
+    removeTrees(treeList.length - trees);
+    moveTrees()
+  }
+}
+
+function createTrees(amount) {
+  for (let i = 0; i < amount; i++) {
+    addTreeToList()
+  }
+}
+
+/*
+  Adds a tree to treeList, if tree is left empty it creates a new random tree
+*/
+function addTreeToList(tree) {
+  const freeTiles = findFreeTiles();
+  console.log(freeTiles);
+  const randomTile = freeTiles[Math.floor(Math.random() * freeTiles.length)];
+  if (!tree) tree = {
+    type: "boom",
+    age: 0,
+  };
+  treeList.push({
+    type: tree.type,
+    age: tree.age,
+    location: randomTile,
+  });
+  if (treeGrid[randomTile]) treeGrid[randomTile].occupied = true;
+}
+
+/*
+  Removes amount of random trees from treeList & treeGrid
+*/
+function removeTrees(amount) {
+  for (let i = 0; i < amount; i++) {
+    const randomTileIndex = Math.floor(Math.random() * treeList.length);
+    if (treeList.length > 0) {
+      if (treeGrid[treeList[randomTileIndex].location]) {
+        treeGrid[treeList[randomTileIndex].location] = {
+          occupied: false,
+        }
+      }
+    }
+    treeList.splice(randomTileIndex, 1).filter(tile => tile !== null);
+  }
+}
+
+/*
+  Moves trees in treeList if their location is out of bounds on the
+  current grid size.
+*/
+function moveTrees() {
+  for (const tree of treeList) {
+    const freeTiles = findFreeTiles();
+    if (tree.location >= gridSize * gridSize) {
+      const randomTileIndex = Math.floor(Math.random() * freeTiles.length);
+      tree.location = freeTiles[randomTileIndex];
+      treeGrid[freeTiles[randomTileIndex]].occupied = true;
+    } else {
+      treeGrid[tree.location].occupied = true;
+    }
+  }
+}
+
+/*
+  Returns a list of all free tiles in treeGrid
+*/
+function findFreeTiles() {
+  const freeTiles = []
+  for (const [i, tile] of treeGrid.entries()) {
+    if (!tile.occupied) freeTiles.push(i)
+  }
+  return freeTiles;
 }
 
 </script>
@@ -66,7 +167,7 @@ function createTreeGridList() {
     transform: skewX(45deg) translateX(calc(6rem * 0.5));
   }
 
-  .tree-cell {
+  .tree-tile {
     max-width: 5rem;
     max-height: 5rem;
     display: flex;
@@ -74,13 +175,18 @@ function createTreeGridList() {
     align-items: center;
   }
 
-  .tree-cell img {
-    height: 200%;
+  .tree {
+    z-index: 1;
+    height: 160%;
     -webkit-transform: rotate(-45deg) translateY(-80%) scaleY(1.8);
     -moz-transform: rotate(-45deg) translateY(-80%) scaleY(1.8);
     -ms-transform: rotate(-45deg) translateY(-80%) scaleY(1.8);
     -o-transform: rotate(-45deg) translateY(-80%) scaleY(1.8);
     transform:  rotate(-45deg) translateY(-80%) scaleY(1.8);
+  }
+
+  .placeholder {
+    opacity: 0;
   }
 </style>
 
@@ -89,8 +195,8 @@ function createTreeGridList() {
   grid-template-rows: repeat({gridSize},minmax(0,1fr));
 ">
   {#each Array(gridSize * gridSize) as _, i}
-    <div class="tree-cell">
-      <img src="resources/boom.svg" alt="boom" class="scale">
+    <div class="tree-tile">
+      <img src="resources/boom.svg" alt="boom" class="tree" class:placeholder="{!treeGrid[i].occupied}">
     </div>
   {/each}
 </div>

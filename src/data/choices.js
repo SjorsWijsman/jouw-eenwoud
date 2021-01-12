@@ -12,5 +12,5 @@ export const choices = [
         resultText: "Je hebt ervoor gekozen om de mollen hun gang te laten gaan. Als dank hebben ze 3 van je bomen ge/mol/d.",
       },
     }
-  }
+  },
 ]

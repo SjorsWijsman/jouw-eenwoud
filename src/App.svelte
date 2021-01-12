@@ -93,6 +93,10 @@ function nextYear() {
     flex-direction: column;
     align-items: center;
   }
+
+  .game-over {
+    filter: grayscale(100%);
+  }
 </style>
 
 <header>
@@ -114,7 +118,9 @@ function nextYear() {
     <GameOver/>
   {/if}
 
-  <Trees/>
+  <div class:game-over="{$currentState === 'gameOver'}">
+    <Trees />
+  </div>
 
   {#if $currentState === "choice"}
     <ChoiceButtons/>

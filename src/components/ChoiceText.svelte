@@ -15,6 +15,12 @@ function randomChoice() {
 }
 </script>
 
+<style>
+  p {
+    height:7rem;
+  }
+</style>
+
 <div class="text">
   <h1>{$currentChoice.title}</h1>
   <p>{$currentChoice.description}</p>

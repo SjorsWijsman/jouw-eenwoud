@@ -17,7 +17,11 @@ const choiceEffect = $currentChoice.choices[$choiceMade].effect;
   }
 
   .effects {
+    position: absolute;
     display: flex;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     flex-direction: row;
     justify-content: center;
   }
@@ -30,6 +34,10 @@ const choiceEffect = $currentChoice.choices[$choiceMade].effect;
 
   .negative {
     color: var(--color-red);
+  }
+
+  p {
+    height: 7rem;
   }
 </style>
 
