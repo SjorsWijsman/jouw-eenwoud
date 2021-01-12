@@ -131,40 +131,41 @@ function findFreeTiles() {
 
 <style>
   .tree-grid {
+    --color-grass-light: #CED67B;
     --color-grass: #B9C95E;
-    --color-ground: #B17F4A;
+    --color-grass-dark: #A5AE44;
+    --color-ground-light: #B17F4A;
     --color-ground-dark: #936037;
+    --grass-height: 30%;
+    --ground-height: 7rem;
     background-color: var(--color-grass);
-    max-width: calc(var(--max-content-width) * 0.6);
-    max-height: calc(var(--max-content-width) * 0.6);
+    width: calc(var(--max-content-width) * 0.6);
+    height: calc(var(--max-content-width) * 0.6);
     margin: 0 auto;
     display: grid;
-    -webkit-transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg);
-    -moz-transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg);
-    -ms-transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg);
-    -o-transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg);
     transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg);
-    perspective: none;
   }
 
   .tree-grid::before {
     content: "";
     position: absolute;
-    width: 6rem;
+    width: var(--ground-height);
     height: 100%;
     left: 100%;
     background-color: var(--color-ground-dark);
-    transform: skewY(45deg) translateY(calc(6rem * 0.5));
+    background: linear-gradient(90deg, var(--color-grass-dark) 0%, var(--color-grass-dark) var(--grass-height), var(--color-ground-dark) var(--grass-height), var(--color-ground-dark) 100%);
+    transform: skewY(45deg) translateY(calc(var(--ground-height) * 0.5));
   }
 
   .tree-grid::after {
     content: "";
     position: absolute;
     width: 100%;
-    height: 6rem;
+    height: var(--ground-height);
     top: 100%;
-    background-color: var(--color-ground);
-    transform: skewX(45deg) translateX(calc(6rem * 0.5));
+    background-color: var(--color-ground-light);
+    background: linear-gradient(-180deg, var(--color-grass-light) 0%, var(--color-grass-light) var(--grass-height), var(--color-ground-light) var(--grass-height), var(--color-ground-light) 100%);
+    transform: skewX(45deg) translateX(calc(var(--ground-height) * 0.5));
   }
 
   .tree-tile {
