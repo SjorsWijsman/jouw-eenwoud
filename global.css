@@ -3,7 +3,7 @@ html {
   --color-green: #465F35;
   --color-green-dark: #28381F;
   --color-yellow: #F0C253;
-  --color-yellow-dark: #8C702C;
+  --color-yellow-dark: #bf942e;
   --color-gray: #C8D8DF;
   --color-gray-dark: #415963;
   --color-red: #C14444;
@@ -58,6 +58,7 @@ p {
 }
 
 button {
+  position: relative;
   transition: all 0.2s;
   user-select: none;
   padding: 1rem;
@@ -65,9 +66,17 @@ button {
   background-color: var(--color-yellow);
   font-weight: 500;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.8rem;
   outline: none;
   cursor: pointer;
+}
+
+.glowing {
+  box-shadow: 0 0 0 0.4rem #F0C25340, 0 0 0 0.8rem #F0C25340;
+}
+
+.glowing:focus, .glowing:hover {
+  box-shadow: none;
 }
 
 button:focus, button:hover {
