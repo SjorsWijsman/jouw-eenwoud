@@ -30,7 +30,7 @@ function makeChoice(choice) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0.5rem;
+    margin: 2rem;
   }
 
   .choiceButton button {
@@ -56,7 +56,7 @@ function makeChoice(choice) {
 <div class="choices">
   {#each Object.keys($currentChoice.choices) as choice}
     <div class="choiceButton">
-      <button type="button" name="button" on:click={() => makeChoice(choice)}>{choice}</button>
+      <button class="glowing" type="button" name="button" on:click={() => makeChoice(choice)}>{choice}</button>
     </div>
   {/each}
 </div>

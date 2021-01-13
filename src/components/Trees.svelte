@@ -33,7 +33,6 @@ function minimumGridSize(trees) {
   and populates this list with trees from treeList
 */
 function createTreeGrid(gridSize) {
-  console.log("Set new grid size to: " + gridSize)
   const list = [];
   for (var i = 0; i < gridSize * gridSize; i++) {
     list.push({
@@ -68,7 +67,6 @@ function createTrees(amount) {
 */
 function addTreeToList(tree) {
   const freeTiles = findFreeTiles();
-  console.log(freeTiles);
   const randomTile = freeTiles[Math.floor(Math.random() * freeTiles.length)];
   if (!tree) tree = {
     type: "boom",
@@ -179,11 +177,7 @@ function findFreeTiles() {
   .tree {
     z-index: 1;
     height: 160%;
-    -webkit-transform: rotate(-45deg) translateY(-80%) scaleY(1.8);
-    -moz-transform: rotate(-45deg) translateY(-80%) scaleY(1.8);
-    -ms-transform: rotate(-45deg) translateY(-80%) scaleY(1.8);
-    -o-transform: rotate(-45deg) translateY(-80%) scaleY(1.8);
-    transform:  rotate(-45deg) translateY(-80%) scaleY(1.8);
+    transform:  rotate(-45deg) translateY(-70%) scaleY(1.8);
   }
 
   .placeholder {

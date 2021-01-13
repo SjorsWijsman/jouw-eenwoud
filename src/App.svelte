@@ -99,10 +99,9 @@ function nextYear() {
 
 <header>
   <div>
-    <Currency/>
-    {#if $currentYear > 1}
-      <CollectionButton/>
-    {/if}
+    <Currency displayCurrency="bomen"/>
+    <img src="./resources/icons/eenwoud.svg" alt="Eenwoud Logo">
+    <Currency displayCurrency="zaden"/>
   </div>
 </header>
 <main>

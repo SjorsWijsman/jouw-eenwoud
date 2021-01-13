@@ -20,7 +20,7 @@ export function resetData() {
   currentState.set("choice")
   currentChoice.set({})
   currency.set({
-    munten: 400,
+    zaden: 400,
     bomen: 12,
   });
   currentYear.set(1);

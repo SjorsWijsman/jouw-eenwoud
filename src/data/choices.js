@@ -4,7 +4,7 @@ export const choices = [
     description: "Er zijn mollen in de grond gevonden die de bomen storen. \nOm de mollen weg te halen, kost dat wel wat geld en tijd. Laat je ze weghalen of laat je ze zitten?",
     choices: {
       "Weghalen": {
-        effect: [["munten", -50]],
+        effect: [["zaden", -50]],
         resultText: "De mollen zijn vrijwillig verhuist naar een boerderij waar ze oud en gelukkig zullen worden.",
       },
       "Laten Zitten": {
