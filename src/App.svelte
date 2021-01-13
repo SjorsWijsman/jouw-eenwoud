@@ -48,7 +48,6 @@ function nextYear() {
 
   header {
     position: fixed;
-    background-color: var(--color-background);
     top: 0;
     width: 100%;
     display: flex;
@@ -85,7 +84,6 @@ function nextYear() {
   footer {
     padding: 1.2rem;
     position: fixed;
-    background-color: var(--color-background);
     bottom: 0;
     height: var(--height-footer);
     width: 100%;

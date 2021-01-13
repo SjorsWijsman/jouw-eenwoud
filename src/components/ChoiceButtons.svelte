@@ -56,12 +56,6 @@ function makeChoice(choice) {
 <div class="choices">
   {#each Object.keys($currentChoice.choices) as choice}
     <div class="choiceButton">
-      {#each $currentChoice.choices[choice].effect as effect}
-      <p class:negative="{effect[1] < 0}">
-        <img src={"./resources/icons/" + effect[0] + ".svg"} alt="munten icon">
-        {effect[1]}
-      </p>
-      {/each}
       <button type="button" name="button" on:click={() => makeChoice(choice)}>{choice}</button>
     </div>
   {/each}
