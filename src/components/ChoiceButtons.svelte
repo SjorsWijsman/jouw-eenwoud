@@ -16,21 +16,26 @@ function makeChoice(choice) {
   choiceMade.set(choice);
   currentState.set("choiceResult");
 }
+
+// https://stackoverflow.com/a/46545530
+const choices = Object.keys($currentChoice.choices)
+  .map((a) => ({sort: Math.random(), value: a}))
+  .sort((a, b) => a.sort - b.sort)
+  .map((a) => a.value);
 </script>
 
 <style>
   .choices {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-end;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 3rem;
   }
 
   .choiceButton {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2rem;
+    justify-content: center;
   }
 
   .choiceButton button {
@@ -54,7 +59,7 @@ function makeChoice(choice) {
 </style>
 
 <div class="choices">
-  {#each Object.keys($currentChoice.choices) as choice}
+  {#each choices as choice}
     <div class="choiceButton">
       <button class="glowing" type="button" name="button" on:click={() => makeChoice(choice)}>{choice}</button>
     </div>

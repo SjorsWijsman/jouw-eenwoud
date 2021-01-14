@@ -23,6 +23,7 @@ currency.subscribe(value => {
     flex-direction: row;
     align-items: center;
     padding: 0.2rem 0;
+		min-width: 6ch;
   }
 
   .negative {

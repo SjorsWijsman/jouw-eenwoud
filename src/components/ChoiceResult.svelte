@@ -43,7 +43,7 @@ const choiceEffect = $currentChoice.choices[$choiceMade].effect;
 
 <div class="container">
   <div class="text">
-    <h1>{$currentChoice.title}</h1>
+    <h1>{$currentChoice.type}</h1>
     <p>{$currentChoice.choices[$choiceMade].resultText}</p>
   </div>
   {#each choiceEffect as effect}

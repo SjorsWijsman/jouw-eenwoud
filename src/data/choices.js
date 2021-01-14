@@ -1,15 +1,23 @@
 export const choices = [
   {
-    title: "Mollen in Eenwoud",
-    description: "Er zijn mollen in de grond gevonden die de bomen storen. \nOm de mollen weg te halen, kost dat wel wat geld en tijd. Laat je ze weghalen of laat je ze zitten?",
+    type: "Quiz-vraag",
+    description: "Bossen worden wel eens de groene longen van onze aarde genoemd. Waarom is dat?",
     choices: {
-      "Weghalen": {
-        effect: [["zaden", -50]],
-        resultText: "De mollen zijn vrijwillig verhuist naar een boerderij waar ze oud en gelukkig zullen worden.",
+      "Omdat ze overdag koolstofdioxide (CO2) opslaan en zuurstof afgeven": {
+        effect: [["zaden", 1]],
+        resultText: "Dit was het goede antwoord!",
       },
-      "Laten Zitten": {
-        effect: [["bomen", -3]],
-        resultText: "Je hebt ervoor gekozen om de mollen hun gang te laten gaan. Als dank hebben ze 3 van je bomen ge/mol/d.",
+      "Omdat ze 's nachts koolstofdioxide (CO2) opslaan en zuurstof afgeven": {
+        effect: [["zaden", 0]],
+        resultText: "Dat was helaas niet het goede antwoord. Het antwoord was:",
+      },
+      "Omdat ze op satellietbeelden de vorm van longen hebben": {
+        effect: [["zaden", 0]],
+        resultText: "Dat was helaas niet het goede antwoord. Het antwoord was:",
+      },  
+      "Omdat bossen zwaveldioxide filteren": {
+        effect: [["zaden", 0]],
+        resultText: "Dat was helaas niet het goede antwoord. Het antwoord was:",
       },
     }
   },

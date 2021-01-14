@@ -141,7 +141,10 @@ function findFreeTiles() {
     height: calc(var(--max-content-width) * 0.6);
     margin: 0 auto;
     display: grid;
-    transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(60deg) rotateY(0deg) rotateZ(45deg);
   }
 
   .tree-grid::before {
@@ -150,8 +153,8 @@ function findFreeTiles() {
     width: var(--ground-height);
     height: 100%;
     left: 100%;
-    background-color: var(--color-ground-dark);
-    background: linear-gradient(90deg, var(--color-grass-dark) 0%, var(--color-grass-dark) var(--grass-height), var(--color-ground-dark) var(--grass-height), var(--color-ground-dark) 100%);
+    background-color: var(--color-ground-light);
+    background: linear-gradient(90deg, var(--color-grass-light) 0%, var(--color-grass-light) var(--grass-height), var(--color-ground-light) var(--grass-height), var(--color-ground-light) 100%);
     transform: skewY(45deg) translateY(calc(var(--ground-height) * 0.5));
   }
 
@@ -161,8 +164,8 @@ function findFreeTiles() {
     width: 100%;
     height: var(--ground-height);
     top: 100%;
-    background-color: var(--color-ground-light);
-    background: linear-gradient(-180deg, var(--color-grass-light) 0%, var(--color-grass-light) var(--grass-height), var(--color-ground-light) var(--grass-height), var(--color-ground-light) 100%);
+    background-color: var(--color-ground-dark);
+    background: linear-gradient(-180deg, var(--color-grass-dark) 0%, var(--color-grass-dark) var(--grass-height), var(--color-ground-dark) var(--grass-height), var(--color-ground-dark) 100%);
     transform: skewX(45deg) translateX(calc(var(--ground-height) * 0.5));
   }
 
@@ -177,7 +180,7 @@ function findFreeTiles() {
   .tree {
     z-index: 1;
     height: 160%;
-    transform:  rotate(-45deg) translateY(-70%) scaleY(1.8);
+    transform:  rotate(-45deg) translateY(-80%) scale(1.2, 2.2);
   }
 
   .placeholder {
@@ -191,7 +194,7 @@ function findFreeTiles() {
 ">
   {#each Array(gridSize * gridSize) as _, i}
     <div class="tree-tile">
-      <img src="resources/boom.svg" alt="boom" class="tree" class:placeholder="{!treeGrid[i].occupied}">
+      <img src={`resources/eik-${Math.floor(Math.random() * 3) + 1}.svg`} alt="boom" class="tree" class:placeholder="{!treeGrid[i].occupied}">
     </div>
   {/each}
 </div>

@@ -27,3 +27,13 @@ export function resetData() {
   currentDay.set(1);
   choiceMade.set("");
 }
+
+// Prevent negative values
+currency.subscribe(value => {
+  for (const currency of Object.keys(value)) {
+    if (value[currency] < 0) {
+      value[currency] = 0;
+    }
+  }
+  return value;
+})

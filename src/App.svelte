@@ -71,7 +71,7 @@ function nextYear() {
   main {
     max-width: var(--max-content-width);
     padding: 1.5rem 1.2rem;
-    height: calc(100vh - var(--height-footer) - 3rem * 2);
+    height: calc(100vh - var(--height-footer) - var(--height-header));
     margin-top: var(--height-header);
     margin-bottom: var(--height-footer);
     display: flex;
@@ -104,7 +104,7 @@ function nextYear() {
     <Currency displayCurrency="zaden"/>
   </div>
 </header>
-<main>
+<main class:game-over="{$currentState === 'gameOver'}">
   {#if $currentState === "choice"}
     <ChoiceText/>
   {:else if $currentState === "choiceResult"}
@@ -115,9 +115,7 @@ function nextYear() {
     <GameOver/>
   {/if}
 
-  <div class:game-over="{$currentState === 'gameOver'}">
-    <Trees />
-  </div>
+  <Trees/>
 
   {#if $currentState === "choice"}
     <ChoiceButtons/>

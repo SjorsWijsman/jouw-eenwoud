@@ -22,6 +22,6 @@ function randomChoice() {
 </style>
 
 <div class="text">
-  <h1>{$currentChoice.title}</h1>
+  <h1>{$currentChoice.type}</h1>
   <p>{$currentChoice.description}</p>
 </div>
