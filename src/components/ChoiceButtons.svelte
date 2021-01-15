@@ -17,7 +17,7 @@ function makeChoice(choice) {
   currentState.set("choiceResult");
 }
 
-// https://stackoverflow.com/a/46545530
+// Randomise order - https://stackoverflow.com/a/46545530
 const choices = Object.keys($currentChoice.choices)
   .map((a) => ({sort: Math.random(), value: a}))
   .sort((a, b) => a.sort - b.sort)

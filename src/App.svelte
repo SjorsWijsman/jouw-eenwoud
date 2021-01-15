@@ -19,16 +19,15 @@ import {
 } from "./data/appData.js";
 
 function nextDay() {
-  if ($currency.bomen <= 0) {
-    currentState.set("gameOver")
-  }
-  else {
+  if ($currency.bomen > 0) {
     if ($currentDay === 5) {
       currentState.set("endOfYear")
     } else {
       currentState.set("choice")
       currentDay.update(value => value += 1)
     }
+  } else {
+    // currentState.set("gameOver")
   }
 }
 

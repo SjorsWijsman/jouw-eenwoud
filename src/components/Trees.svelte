@@ -1,5 +1,5 @@
 <script>
-import { currency } from "../data/appData.js";
+import { currency, currentDay } from "../data/appData.js";
 
 const minGridSize = 4;
 
@@ -7,10 +7,15 @@ let trees = $currency.bomen;
 let gridSize = minGridSize;
 let treeList = [];
 let treeGrid = [];
+let lastYear = 1;
 
 currency.subscribe(value => {
   trees = value.bomen;
 });
+
+currentDay.subscribe(value => {
+  ageTrees();
+})
 
 // Update minimum grid size according to trees amount
 $: gridSize = minimumGridSize(trees);
@@ -70,14 +75,13 @@ function addTreeToList(tree) {
   const randomTile = freeTiles[Math.floor(Math.random() * freeTiles.length)];
   if (!tree) tree = {
     type: "boom",
-    age: 0,
+    age: 1,
   };
   treeList.push({
-    type: tree.type,
-    age: tree.age,
+    ...tree,
     location: randomTile,
   });
-  if (treeGrid[randomTile]) treeGrid[randomTile].occupied = true;
+  if (treeGrid[randomTile]) treeGrid[randomTile] = tree;
 }
 
 /*
@@ -120,9 +124,21 @@ function moveTrees() {
 function findFreeTiles() {
   const freeTiles = []
   for (const [i, tile] of treeGrid.entries()) {
-    if (!tile.occupied) freeTiles.push(i)
+    if (!tile.occupied) freeTiles.push(i);
   }
   return freeTiles;
+}
+
+function ageTrees() {
+  const chance = 0.05;
+  for (const tree of treeGrid) {
+    if (tree.occupied) {
+      const random = Math.random()
+      if (chance > random) {
+        if (tree.age < 3) tree.age += 1;
+      }
+    }
+  }
 }
 
 </script>
@@ -180,7 +196,7 @@ function findFreeTiles() {
   .tree {
     z-index: 1;
     height: 160%;
-    transform:  rotate(-45deg) translateY(-80%) scale(1.2, 2.2);
+    transform: rotate(-45deg) translateY(-80%) scale(1.2, 2.2);
   }
 
   .placeholder {
@@ -192,9 +208,13 @@ function findFreeTiles() {
   grid-template-columns: repeat({gridSize},minmax(0,1fr));
   grid-template-rows: repeat({gridSize},minmax(0,1fr));
 ">
-  {#each Array(gridSize * gridSize) as _, i}
+  {#each treeGrid as tile}
     <div class="tree-tile">
-      <img src={`resources/eik-${Math.floor(Math.random() * 3) + 1}.svg`} alt="boom" class="tree" class:placeholder="{!treeGrid[i].occupied}">
+      {#if tile.occupied}
+        <img src={`resources/eik-${tile.age}.svg`} alt="boom" class="tree">
+      {:else}
+        <img src={`resources/eik-1.svg`} class="tree placeholder">
+      {/if}
     </div>
   {/each}
 </div>

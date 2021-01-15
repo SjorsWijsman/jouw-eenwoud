@@ -21,30 +21,31 @@ export let parentFunction;
     transform: scale(1);
   }
 
+  .nextButton {
+    position: relative;
+    color: var(--color-white);
+    background-color: var(--color-yellow);
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    box-shadow: 0 0.4rem 0 var(--color-yellow-dark);
+  }
+
   button:focus .nextButton, button:hover .nextButton {
     transition: 0.2s;
     transform: translateY(0.3rem);
     box-shadow: 0 0 0 var(--color-yellow-dark);
   }
 
-  .nextButton {
-    position: relative;
-    color: var(--color-white);
-    background-color: var(--color-yellow);
-    width: 5rem;
-    height: 5rem;
-    border-radius: 50%;
-    box-shadow: 0 0.3rem 0 var(--color-yellow-dark);
-  }
-
   button span {
     position: absolute;
     bottom: 0;
     transform: translateY(100%);
+    opacity: 0.9;
   }
 </style>
 
 <button type="button" name="button" on:click={parentFunction}>
-  <div class="nextButton"></div>
+  <div class="nextButton glowing"></div>
   <span><slot/></span>
 </button>
