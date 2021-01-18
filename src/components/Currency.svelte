@@ -39,7 +39,7 @@ currency.subscribe(value => {
 
 <div class="currency">
   <p class:negative="{$amount < 0}">
-    <img src={`./resources/icons/${displayCurrency}.svg`} alt="zaden icon">
+    <img src={`./resources/icons/${displayCurrency}.svg`} alt="stappen icoon">
     {Math.floor($amount)}
   </p>
 </div>

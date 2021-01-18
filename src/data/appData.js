@@ -1,15 +1,21 @@
 import { writable } from "svelte/store"
 
 // Create writable stores
+export const treeGrid = writable()
 export const currency = writable()
 export const currentYear = writable()
+export const dialogue = writable()
+export const selectedTile = writable()
 resetData()
 
 export function resetData() {
+  treeGrid.set([])
   currency.set({
-    stappen: 0,
+    stappen: 12000,
   });
   currentYear.set(1);
+  dialogue.set(undefined);
+  selectedTile.set(undefined);
 }
 
 // Prevent negative values

@@ -1,10 +1,16 @@
 <script>
 import Currency from "./components/Currency.svelte";
 import YearCounter from "./components/YearCounter.svelte";
-import Trees from "./components/Trees.svelte";
+import Tree from "./components/Tree.svelte";
+import TreeGrid from "./components/TreeGrid.svelte";
+import TreeDetails from "./components/TreeDetails.svelte";
+import PlantTree from "./components/PlantTree.svelte";
+import DialogueBox from "./components/DialogueBox.svelte";
 import {
   currency,
   currentYear,
+  dialogue,
+  selectedTile,
 } from "./data/appData.js";
 </script>
 
@@ -77,7 +83,16 @@ import {
   <img class="logo" src="./resources/icons/eenwoud.svg" alt="Eenwoud Logo">
 </header>
 <main>
-  <Trees/>
+  <TreeGrid/>
+  {#if $dialogue === "plantTree"}
+    <DialogueBox>
+      <PlantTree/>
+    </DialogueBox>
+  {:else if $dialogue === "treeDetails"}
+    <DialogueBox>
+      <TreeDetails/>
+    </DialogueBox>
+  {/if}
 </main>
 <footer>
   <YearCounter/>
