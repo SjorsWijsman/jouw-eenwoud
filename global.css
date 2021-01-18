@@ -9,7 +9,7 @@ html {
   --color-red: #C14444;
   --color-white: #FFFFFF;
   --color-cyan: #64BAAA;
-  --color-cyan-dark: #3B9F8D;
+  --color-cyan-dark: #3CA08E;
   --color-text: var(--color-white);
   --color-background: var(--color-cyan-dark);
   --breakpoint-tablet: 70rem;
@@ -82,9 +82,14 @@ button:focus, button:hover {
 
 button:disabled {
   cursor: default;
-  filter: grayscale(1);
-  opacity: 0.9;
+  background-color: var(--color-gray-dark);
+  opacity: 0.4;
   box-shadow: none;
+}
+
+button:disabled:focus, button:disabled:hover {
+  background-color: var(--color-gray-dark);
+  transform: scale(1);
 }
 
 button.green {
@@ -95,4 +100,14 @@ button.green {
 button.green:focus, button.green:hover {
   background-color: var(--color-green-dark);
   box-shadow: none;
+}
+
+select {
+  padding: 0.8rem;
+  padding-right: 1rem;
+  border: 0;
+  background-color: var(--color-cyan);
+  border-radius: 5rem;
+  appearance: none;
+  text-align: center;
 }
