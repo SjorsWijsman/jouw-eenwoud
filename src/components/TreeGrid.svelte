@@ -15,9 +15,9 @@ const gridSize = 10;
 let selected = false;
 
 // Reset dialogue when selection changes
-$: selected, dialogue.set("")
+$: selected, dialogue.set("");
 // Set selected tile value to selectedTile store
-$: if (selected !== false) selectedTile.set(selected)
+$: if (selected !== false) selectedTile.set(selected);
 
 // Create grid according to grid size with random groundtypes
 treeGrid.set(createGrid());
@@ -43,6 +43,7 @@ function randomlyPlantTrees(grid) {
         age: Math.floor(Math.random() * 3) + 1,
         xOffset: Math.floor(Math.random() * 26) - 12.5,
         yOffset: Math.floor(Math.random() * 26) - 12.5,
+        owner: "Henk",
       }
     }
   }

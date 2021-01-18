@@ -4,6 +4,7 @@ import {
   treeTypes,
 } from "../data/gameData.js";
 import {
+  user,
   treeGrid,
   currency,
   dialogue,
@@ -15,7 +16,7 @@ let selectedTree = treeTypes[0];
 
 function plantTree() {
   $treeGrid[$selectedTile].tree = {
-    owner: "user",
+    owner: $user.name,
     type: selectedTree,
     age: 1,
   };

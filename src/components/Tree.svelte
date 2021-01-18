@@ -1,4 +1,6 @@
 <script>
+import { user } from "../data/appData.js"; 
+
 export let tileInfo;
 </script>
 
@@ -121,12 +123,17 @@ export let tileInfo;
     user-select: none;
     position: relative;
   }
+
+  .highlight {
+    filter: brightness(120%);
+  }
 </style>
 
 <div class="tree-tile"
   class:grass="{tileInfo.ground.type === 'gras'}"
   class:sand="{tileInfo.ground.type === 'zand'}"
-  class:water="{tileInfo.ground.type === 'water'}">
+  class:water="{tileInfo.ground.type === 'water'}"
+  class:highlight="{tileInfo.owner === $user.name}">
   {#if tileInfo.tree}
     <img
       src={`resources/${tileInfo.tree.type}-${tileInfo.tree.age}.svg`}
