@@ -52,7 +52,6 @@ h2 {
   font-weight: 300;
   font-size: calc(1.2rem);
   margin-bottom: 1rem;
-  opacity: 0.9;
 }
 
 p {
@@ -72,17 +71,28 @@ button {
   border-radius: 0.8rem;
   outline: none;
   cursor: pointer;
-}
-
-.glowing {
   box-shadow: 0 0 0 0.4rem #F0C25340, 0 0 0 0.8rem #F0C25340;
-}
-
-.glowing:focus, .glowing:hover {
-  box-shadow: none;
 }
 
 button:focus, button:hover {
   background-color: var(--color-yellow-dark);
   transform: scale(1.1);
+  box-shadow: none;
+}
+
+button:disabled {
+  cursor: default;
+  filter: grayscale(1);
+  opacity: 0.9;
+  box-shadow: none;
+}
+
+button.green {
+  background-color: var(--color-green);
+  box-shadow: 0 0 0 0.4rem #465F3540, 0 0 0 0.8rem #465F3540;
+}
+
+button.green:focus, button.green:hover {
+  background-color: var(--color-green-dark);
+  box-shadow: none;
 }
