@@ -1,13 +1,6 @@
 import { writable } from "svelte/store"
 
-// Create writable stores for each data point
-/*
-States:
-- choice
-- choiceResult
-- endOfYear
-- gameOver
-*/
+// Create writable stores
 export const currency = writable()
 export const currentYear = writable()
 resetData()

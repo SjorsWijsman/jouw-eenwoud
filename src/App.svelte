@@ -10,7 +10,7 @@ import {
 
 <style>
   * {
-    --max-content-width: 35rem;
+    --max-content-width: 50rem;
     --height-header: 5rem;
     --height-footer: 7rem;
   }

@@ -1,8 +1,10 @@
 <script>
+import { fade, fly } from 'svelte/transition';
+
 const treeGrid = [];
 const gridSize = 10;
 
-let selected;
+let selected = false;
 
 const groundTypes = [
   {
@@ -26,35 +28,53 @@ const defaultTree = {
 }
 
 for (var i = 0; i < gridSize * gridSize; i++) {
-  const hasATree = Math.random() < 0.6;
   const groundType = groundTypes[Math.floor(Math.random() * groundTypes.length)];
-  const tileObject = {
+  treeGrid.push({
     ground: groundType,
-  }
-  if (hasATree) {
-    tileObject.tree = {
+  })
+}
+
+for (const tile of treeGrid) {
+  const hasATree = Math.random() < 0.6;
+  if (hasATree && tile.ground.growModifier > 0) {
+    tile.tree = {
       ...defaultTree,
       age: Math.floor(Math.random() * 3) + 1,
       xOffset: Math.floor(Math.random() * 26) - 12.5,
       yOffset: Math.floor(Math.random() * 26) - 12.5,
     }
   }
-  treeGrid.push(tileObject)
 }
+
+function plantTree(tile, i) {
+  console.log("plant boom" , tile, i)
+}
+
+function treeDetails(tile, i) {
+  console.log("bekijk boom" , tile, i)
+}
+
 </script>
 
 <style>
+  h3 {
+    text-transform: capitalize;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
   .container {
     position: fixed;
     overflow: hidden;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    min-width: 100%;
+    min-height: 100%;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
+    transition: all .3s;
   }
 
   .tree-grid {
@@ -73,7 +93,7 @@ for (var i = 0; i < gridSize * gridSize; i++) {
     --ground-height: 8rem;
     position: relative;
     display: grid;
-    transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg);
+    transform: rotateX(60deg) rotateY(0) rotateZ(45deg);
   }
 
   .tree-tile {
@@ -84,7 +104,8 @@ for (var i = 0; i < gridSize * gridSize; i++) {
     justify-content: center;
     align-items: center;
     background-color: var(--color-grass);
-    transition: all .3s
+    transition: all .3s;
+    cursor: pointer;
   }
 
   .tree-tile::before {
@@ -182,34 +203,78 @@ for (var i = 0; i < gridSize * gridSize; i++) {
     position: relative;
   }
 
+  .info {
+    z-index: 2;
+    position: absolute;
+    transform: rotate(-45deg) scale(1.2, 2.2);
+    text-shadow: 0 0 2rem var(--color-gray-dark);
+  }
+
+  .info-tile {
+    transform: translateY(-4.5rem);
+    width: 8rem;
+    text-align: center;
+  }
+
+  .tile-button {
+    position: absolute;
+    transform: translate(8rem, -1.2rem);
+    width: 6rem;
+  }
+
   .selected {
     transform: translate(-10rem, -10rem);
   }
 
-  .unselected {
-    filter: brightness(90%);
+  .selected-container {
+    transform: translateY(2rem);
   }
 </style>
 
-<div class="container">
+<div class="container" class:selected-container="{selected !== false}">
   <div class="tree-grid" style="
     grid-template-columns: repeat({gridSize},5rem);
     grid-template-rows: repeat({gridSize},5rem);">
     {#each treeGrid as tile, i}
       <div class="tree-tile"
         class:selected="{selected === i}"
-        class:unselected="{selected && selected !== i}"
-	      on:click="{() => selected === i ? selected = !i : selected = i}"
+	      on:click="{() => selected === i ? selected = false : selected = i}"
         class:grass="{tile.ground.type === 'gras'}"
         class:sand="{tile.ground.type === 'zand'}"
         class:water="{tile.ground.type === 'water'}"
         style="z-index: {i};">
-        {#if tile.ground.growModifier > 0 && tile.tree}
+        {#if tile.tree}
           <img
             src={`resources/${tile.tree.type}-${tile.tree.age}.svg`}
             alt="boom"
             class="tree"
             style="top: {tile.tree.yOffset}%; left: {tile.tree.xOffset}%">
+        {/if}
+        {#if selected === i}
+          <div class="info" transition:fade="{{duration: 300}}">
+            {#if tile.tree}
+              <div class="info-tile" transition:fly="{{y: 100, duration: 300}}">
+                <h3>{tile.tree.type}</h3>
+                <span>Leeftijd: {tile.tree.age}</span>
+              </div>
+            {:else}
+              <div class="info-tile" transition:fly="{{y: 100, duration: 300}}">
+                <h3>{tile.ground.type}</h3>
+                <span>{tile.ground.growModifier * 100}%</span>
+              </div>
+            {/if}
+            {#if tile.tree}
+              <button class="tile-button" type="button" name="button"
+                transition:fly="{{x: -100, duration: 300}}"
+                on:click={() => treeDetails(tile, i)}
+              >Bekijk boom</button>
+            {:else if tile.ground.growModifier > 0}
+              <button class="tile-button green" type="button" name="button"
+                transition:fly="{{x: -100, duration: 300}}"
+                on:click={() => plantTree(tile, i)}
+              >Plant boom</button>
+            {/if}
+          </div>
         {/if}
       </div>
     {/each}
