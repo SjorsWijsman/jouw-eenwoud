@@ -4,15 +4,20 @@ import { dialogue } from "../data/appData.js";
 </script>
 
 <style>
+.dialogue-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
 .dialogue {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   width: 100%;
   max-width: calc(var(--max-content-width) - 20rem);
-  max-height: 100%;
-  margin: 1rem;
   padding: 1rem;
   padding-top: 1.5rem;
   background-color: var(--color-cyan-dark);
@@ -20,38 +25,25 @@ import { dialogue } from "../data/appData.js";
 }
 
 .close-button {
-  position: absolute;
-  right: -1rem;
-  top: -1rem;
+  position: relative;
+  top: -2.5rem;
+  right: -100%;
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
 }
 
-@media only screen and (max-width: 40rem) {
-  .dialogue {
-    position: relative;
-    top: 0;
-    left: 0;
-    transform: none;
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-  }
-
+@media only screen and (max-width: 35rem) {
   .close-button {
-    position: absolute;
-    right: -50%;
-    top: 100%;
-    transform: translateX(-150%);
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
+    top: -0.3rem;
+    right: calc(-100% + 2.3rem);
   }
 }
 </style>
 
-<div class="dialogue" transition:fly="{{y: 200, duration: 300}}">
-  <button type="button" name="button" class="close-button" on:click={() => dialogue.set("")}></button>
-  <slot/>
+<div class="dialogue-container">
+  <div class="dialogue" transition:fly="{{y: 200, duration: 300}}">
+    <button type="button" name="button" class="close-button" on:click={() => dialogue.set("")}></button>
+    <slot/>
+  </div>
 </div>

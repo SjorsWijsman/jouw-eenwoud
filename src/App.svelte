@@ -54,10 +54,6 @@ header {
 
 main {
   max-width: var(--max-content-width);
-  padding: 1.5rem 1.2rem;
-  height: calc(100vh - var(--height-footer) - var(--height-header));
-  margin-top: var(--height-header);
-  margin-bottom: var(--height-footer);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
