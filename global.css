@@ -109,5 +109,9 @@ select {
   background-color: var(--color-cyan);
   border-radius: 5rem;
   appearance: none;
-  text-align: center;
+  text-transform: capitalize;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
