@@ -27,6 +27,28 @@ import { dialogue } from "../data/appData.js";
   height: 2rem;
   border-radius: 50%;
 }
+
+@media only screen and (max-width: 40rem) {
+  .dialogue {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .close-button {
+    position: absolute;
+    right: -50%;
+    top: 100%;
+    transform: translateX(-150%);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+  }
+}
 </style>
 
 <div class="dialogue" transition:fly="{{y: 200, duration: 300}}">

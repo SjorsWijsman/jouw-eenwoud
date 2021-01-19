@@ -3,6 +3,7 @@ import Tree from "./Tree.svelte";
 import Icon from "./Icon.svelte";
 import {
   treeTypes,
+  stepsPerDay,
 } from "../data/gameData.js";
 import {
   user,
@@ -12,6 +13,8 @@ import {
   selectedTile,
 } from "../data/appData.js";
 
+const treeCost = 10000;
+
 let ground = $treeGrid[$selectedTile].ground;
 let selectedTree = treeTypes[0];
 
@@ -20,11 +23,11 @@ function plantTree() {
     owner: $user.name,
     type: selectedTree,
     age: 1,
-    health: .8,
+    health: stepsPerDay * (1 + (1 - ground.growModifier)) * 4,
   };
   currency.update(value => {
     value.stappen -= 10000;
-    return value
+    return value;
   });
   dialogue.set("treeDetails");
 }
@@ -91,17 +94,16 @@ button {
 }
 </style>
 
-
 <div class="container">
   <header>
     <h2>Plant een boom</h2>
     <p>
       <span class="warning">
-        {#if $currency.stappen < 10000}
+        {#if $currency.stappen < treeCost}
           <Icon type={"warning"}/>
         {/if}
       </span>
-      Benodigd: 10.000
+      Benodigd: {treeCost.toLocaleString("NL-NL")}
       <Icon type={"stappen"}/>
     </p>
   </header>
@@ -113,12 +115,12 @@ button {
 		{/each}
 	</select>
   <div class="tree-preview">
-    {#each Array(3) as _, i}
+    {#each [1,7,30] as i}
       <div class="tree-container">
         <Tree tileInfo={{
           tree: {
             type: selectedTree,
-            age: i + 1,
+            age: i,
           },
           ground: ground,
         }}/>
@@ -128,10 +130,10 @@ button {
   <div class="ground-info">
     <p>
       <Icon type={"stappen"}/>
-      per dag om de boom gezond te houden: {2000 * (1 + (1 - ground.growModifier))}
+      per dag om de boom gezond te houden: {(stepsPerDay * (1 + (1 - ground.growModifier))).toLocaleString("NL-NL")}
     </p>
   </div>
   <footer>
-    <button type="button" name="button" disabled={$currency.stappen < 10000} on:click={() => plantTree()}>Plant boom</button>
+    <button type="button" name="button" disabled={$currency.stappen < treeCost} on:click={() => plantTree()}>Plant boom</button>
   </footer>
 </div>

@@ -4,6 +4,7 @@ import { cubicOut } from 'svelte/easing';
 
 export let health;
 $: progress.set(health);
+export let maxHealth;
 
 const progress = tweened(0, {
 	duration: 800,
@@ -30,4 +31,4 @@ progress[value]::-webkit-progress-value {
 }
 </style>
 
-<progress value={$progress}></progress>
+<progress value={$progress} max={maxHealth}></progress>

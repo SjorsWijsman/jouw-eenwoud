@@ -14,5 +14,13 @@ export const groundTypes = [
 ]
 
 export const treeTypes = [
-  "eik", "den", "berk"
+  "eik", "den", "berk",
 ]
+
+export const stepsPerDay = 2000;
+
+export const treeStages = {
+  0: 1,
+  7: 2,
+  30: 3,
+}

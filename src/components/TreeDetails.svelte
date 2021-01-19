@@ -3,10 +3,48 @@ import Tree from "./Tree.svelte";
 import Icon from "./Icon.svelte";
 import Health from "./Health.svelte";
 import {
+  stepsPerDay,
+} from "../data/gameData.js";
+import {
   user,
   treeGrid,
   selectedTile,
+  currency,
 } from "../data/appData.js";
+
+let treeHealth;
+let maxTreeHealth;
+$: treeHealth = getTreeHealth($treeGrid[$selectedTile].tree);
+$: maxTreeHealth = (stepsPerDay * (1 + (1 - $treeGrid[$selectedTile].ground.growModifier))) * 5;
+
+const maxAddHealthAmount = 1000;
+let addHealthAmount = maxAddHealthAmount;
+
+$: treeHealth, $currency, setAddHealthAmount();
+
+function getTreeHealth(tree) {
+  if (tree) {
+    return tree.health;
+  }
+}
+
+function setAddHealthAmount() {
+  addHealthAmount = maxAddHealthAmount;
+  if (maxAddHealthAmount > $currency.stappen) {
+    addHealthAmount = $currency.stappen;
+  }
+  if (treeHealth + addHealthAmount > maxTreeHealth) {
+    addHealthAmount = maxTreeHealth - treeHealth;
+  }
+}
+
+function addHealth(amount) {
+  currency.update(value => {
+    value.stappen -= amount;
+    return value;
+  });
+  $treeGrid[$selectedTile].tree.health += amount;
+}
 </script>
 
 <style>
@@ -43,13 +81,36 @@ p {
 }
 
 .health-container {
-  height: 2.5rem;
+  height: 3rem;
   width: 100%;
   margin-top: 1rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.health-container span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.current-health {
+  font-weight: 500;
+}
+
+.add-health-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.add-health-container button {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 footer {
@@ -79,9 +140,20 @@ footer {
     <Tree tileInfo={$treeGrid[$selectedTile]}/>
   </div>
   <div class="health-container">
-    <span>{$treeGrid[$selectedTile].tree.health * 100}%</span>
-    <Health health={$treeGrid[$selectedTile].tree.health}/>
+    <span>
+      <span class="current-health">{treeHealth.toLocaleString("NL-NL")}</span>/{maxTreeHealth.toLocaleString("NL-NL")}
+      <Icon type={"stappen"}/>
+    </span>
+    <Health health={treeHealth} maxHealth={maxTreeHealth}/>
   </div>
+  {#if $treeGrid[$selectedTile].tree.owner === $user.name}
+    <div class="add-health-container">
+      <button type="button" name="button" disabled={addHealthAmount <= 0} on:click={() => addHealth(addHealthAmount)}>
+        <Icon type={"stappen"}/>
+        <span>+{addHealthAmount}</span>
+      </button>
+    </div>
+  {/if}
   <footer>
     <p>{$treeGrid[$selectedTile].tree.age} jaar oud</p>
   </footer>
