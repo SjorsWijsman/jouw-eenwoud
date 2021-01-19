@@ -1,4 +1,5 @@
 <script>
+import Icon from "./Icon.svelte";
 import { currency } from "../data/appData.js";
 import { tweened } from 'svelte/motion';
 import { cubicOut } from 'svelte/easing';
@@ -29,17 +30,11 @@ currency.subscribe(value => {
   .negative {
     color: var(--color-red);
   }
-
-  img {
-    height: 1.5rem;
-    width: 1.5rem;
-    margin-right: 0.4rem;
-  }
 </style>
 
 <div class="currency">
   <p class:negative="{$amount < 0}">
-    <img src={`./resources/icons/${displayCurrency}.svg`} alt="stappen icoon">
+		<Icon type={displayCurrency}/>
     {Math.floor($amount)}
   </p>
 </div>

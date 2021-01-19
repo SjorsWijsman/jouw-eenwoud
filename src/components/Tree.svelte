@@ -1,5 +1,5 @@
 <script>
-import { user } from "../data/appData.js"; 
+import { user } from "../data/appData.js";
 
 export let tileInfo;
 </script>
@@ -27,6 +27,7 @@ export let tileInfo;
     align-items: center;
     background-color: var(--color-grass);
     transition: all .3s;
+    cursor: pointer;
   }
 
   .tree-tile::before {
@@ -125,7 +126,7 @@ export let tileInfo;
   }
 
   .highlight {
-    filter: brightness(120%);
+    filter: brightness(110%);
   }
 </style>
 
@@ -133,7 +134,7 @@ export let tileInfo;
   class:grass="{tileInfo.ground.type === 'gras'}"
   class:sand="{tileInfo.ground.type === 'zand'}"
   class:water="{tileInfo.ground.type === 'water'}"
-  class:highlight="{tileInfo.owner === $user.name}">
+  class:highlight="{tileInfo.tree && tileInfo.tree.owner === $user.name}">
   {#if tileInfo.tree}
     <img
       src={`resources/${tileInfo.tree.type}-${tileInfo.tree.age}.svg`}

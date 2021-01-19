@@ -1,5 +1,6 @@
 <script>
 import Tree from "./Tree.svelte";
+import Icon from "./Icon.svelte";
 import {
   treeTypes,
 } from "../data/gameData.js";
@@ -19,12 +20,13 @@ function plantTree() {
     owner: $user.name,
     type: selectedTree,
     age: 1,
+    health: .8,
   };
   currency.update(value => {
     value.stappen -= 10000;
     return value
   });
-  dialogue.set(undefined);
+  dialogue.set("treeDetails");
 }
 </script>
 
@@ -36,7 +38,7 @@ header {
   margin-bottom: 1rem;
 }
 
-header h2 {
+h2 {
   font-weight: 500;
   margin-bottom: 0.5rem;
 }
@@ -68,9 +70,20 @@ p {
   transform: rotateX(60deg) rotateY(0) rotateZ(45deg);
 }
 
-.icon {
-  height: 1.5rem;
-  width: 1.5rem;
+.ground-info {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.warning {
+  margin-right: 0.5rem;
+  margin-top: 0.3rem;
+}
+
+footer {
+  margin-top: 1rem;
 }
 
 button {
@@ -78,13 +91,20 @@ button {
 }
 </style>
 
-<header>
-  <h2>Plant een boom</h2>
-  <p>Kosten: 10.000
-    <img class="icon" src={`./resources/icons/stappen.svg`} alt="stappen icoon">
-  </p>
-</header>
+
 <div class="container">
+  <header>
+    <h2>Plant een boom</h2>
+    <p>
+      <span class="warning">
+        {#if $currency.stappen < 10000}
+          <Icon type={"warning"}/>
+        {/if}
+      </span>
+      Benodigd: 10.000
+      <Icon type={"stappen"}/>
+    </p>
+  </header>
   <select bind:value={selectedTree}>
 		{#each treeTypes as type}
 			<option value={type}>
@@ -105,5 +125,13 @@ button {
       </div>
     {/each}
   </div>
-  <button type="button" name="button" disabled={$currency.stappen < 10000} on:click={() => plantTree()}>Plant boom</button>
+  <div class="ground-info">
+    <p>
+      <Icon type={"stappen"}/>
+      per dag om de boom gezond te houden: {2000 * (1 + (1 - ground.growModifier))}
+    </p>
+  </div>
+  <footer>
+    <button type="button" name="button" disabled={$currency.stappen < 10000} on:click={() => plantTree()}>Plant boom</button>
+  </footer>
 </div>

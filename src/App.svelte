@@ -77,7 +77,12 @@ import {
 
 <header>
   <div class="header-container">
-    <Currency displayCurrency="stappen"/>
+    <div on:click={() => currency.update(value => {
+      value.stappen += 1000;
+      return value;
+    })}>
+      <Currency displayCurrency="stappen"/>
+    </div>
     <span>profiel</span>
   </div>
   <img class="logo" src="./resources/icons/eenwoud.svg" alt="Eenwoud Logo">
@@ -95,5 +100,7 @@ import {
   {/if}
 </main>
 <footer>
-  <YearCounter/>
+  <div on:click={() => currentYear.set($currentYear + 1)}>  
+    <YearCounter/>
+  </div>
 </footer>

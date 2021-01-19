@@ -44,6 +44,7 @@ function randomlyPlantTrees(grid) {
         xOffset: Math.floor(Math.random() * 26) - 12.5,
         yOffset: Math.floor(Math.random() * 26) - 12.5,
         owner: "Henk",
+        health: 1,
       }
     }
   }
