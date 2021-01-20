@@ -1,29 +1,38 @@
 import { writable } from "svelte/store"
 
-// Create writable stores for each data point
-/*
-States:
-- choice
-- choiceResult
-- endOfYear
-- gameOver
-*/
-export const currentState = writable()
-export const currentChoice = writable()
-export const currency = writable()
-export const currentYear = writable()
-export const currentDay = writable()
-export const choiceMade = writable()
-resetData()
+// Create writable stores
+export const user = writable({
+  name: "Gebruiker",
+  introduction: true,
+})
+export const treeGrid = writable([])
+export const currency = writable({
+  stappen: 12500,
+})
+export const currentYear = writable(35)
+export const dialogue = writable(undefined)
+export const selectedTile = writable(undefined)
 
 export function resetData() {
-  currentState.set("choice")
-  currentChoice.set({})
-  currency.set({
-    munten: 400,
-    bomen: 20,
+  user.set({
+    name: "Gebruiker",
+    introduction: true,
   })
-  currentYear.set(1);
-  currentDay.set(1);
-  choiceMade.set("");
+  treeGrid.set([])
+  currency.set({
+    stappen: 12500,
+  });
+  currentYear.set(35);
+  dialogue.set(undefined);
+  selectedTile.set(undefined);
 }
+
+// Prevent negative currency values
+currency.subscribe(value => {
+  for (const currency of Object.keys(value)) {
+    if (value[currency] < 0) {
+      value[currency] = 0;
+    }
+  }
+  return value;
+})
