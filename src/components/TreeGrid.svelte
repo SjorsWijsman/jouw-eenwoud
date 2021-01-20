@@ -10,7 +10,7 @@ import {
   treeGrid,
   dialogue,
   selectedTile,
-  activities
+  currentActivities
 } from "../data/appData.js";
 import { draggable } from "../scripts/draggable.js";
 
@@ -27,6 +27,7 @@ function createGrid() {
   for (var i = 0; i < gridSize * gridSize; i++) {
     const groundType = groundTypes[Math.floor(Math.random() * groundTypes.length)];
     grid.push({
+      index: i,
       ground: groundType,
     })
   }
@@ -115,7 +116,7 @@ h3 {
       {#each $treeGrid as tile, i}
         <div class="tile-container" class:selected="{selected === i}" style="z-index: {i};">
           <div on:click="{() => selected === i ? selected = false : selected = i}">
-            <Tree tileInfo={tile} activity={Object.keys($activities).includes(i.toString())}/>
+            <Tree tileInfo={tile} activity={Object.keys($currentActivities).includes(i.toString())}/>
           </div>
           {#if selected === i}
             <div class="info-container" transition:fade="{{duration: 300}}">

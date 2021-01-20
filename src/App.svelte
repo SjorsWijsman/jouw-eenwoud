@@ -18,6 +18,12 @@ import {
   selectedTile,
   user,
 } from "./data/appData.js";
+
+currentYear.subscribe(value => {
+  if ($dialogue === "activity") {
+    dialogue.set("");
+  }
+})
 </script>
 
 <style>

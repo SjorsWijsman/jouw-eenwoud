@@ -8,8 +8,9 @@ import {
   currentYear,
   user,
   currency,
-  activities,
+  currentActivities,
 } from "../data/appData.js";
+import { activitiesList } from "../data/activities.js";
 
 // Randomly plant trees on grid to simulate other users
 treeGrid.update(grid => randomlyPlantTrees(grid));
@@ -53,15 +54,15 @@ currentYear.subscribe(() => {
     return value;
   })
   // Place random activity on a tree every year
-  activities.update(value => {
+  currentActivities.update(value => {
     value = {};
     if ($currentYear !== 35) {
       for (let i = 0; i < 999; i++) {
         const randomTile = Math.floor(Math.random() * $treeGrid.length);
         if ($treeGrid[randomTile].tree) {
           value[randomTile] = {
-            acitivity: "hallo",
-            reward: ["stappen", 500]
+            activity: Math.floor(Math.random() * activitiesList.length),
+            reward: ["stappen", Math.floor(Math.random() * 300) + 200],
           }
           break;
         }

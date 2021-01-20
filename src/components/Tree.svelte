@@ -1,7 +1,7 @@
 <script>
 import { fly } from 'svelte/transition';
 import { treeStages } from "../data/gameData.js";
-import { user, dialogue } from "../data/appData.js";
+import { user, dialogue, activeActivity } from "../data/appData.js";
 
 export let tileInfo;
 export let activity = false;
@@ -204,6 +204,9 @@ function scaleValue(value, from, to) {
   {#if activity}
     <button type="button" name="button" class="activity-button"
     transition:fly="{{ y: 100, duration: 800 }}"
-    on:click={() => dialogue.set("activity")}></button>
+    on:click={() => {
+      dialogue.set("activity");
+      activeActivity.set(tileInfo.index);
+    }}></button>
   {/if}
 </div>

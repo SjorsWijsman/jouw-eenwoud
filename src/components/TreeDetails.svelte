@@ -11,7 +11,7 @@ import {
   selectedTile,
   currency,
   tutorialStep,
-  activities,
+  currentActivities,
 } from "../data/appData.js";
 
 let treeHealth;
@@ -160,7 +160,7 @@ footer {
     </p>
   </header>
   <div class="tree-container">
-    <Tree tileInfo={$treeGrid[$selectedTile]} activity={Object.keys($activities).includes($selectedTile.toString())}/>
+    <Tree tileInfo={$treeGrid[$selectedTile]} activity={Object.keys($currentActivities).includes($selectedTile.toString())}/>
   </div>
   <div class="health-container">
     <span>
