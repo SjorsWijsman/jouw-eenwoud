@@ -1,5 +1,4 @@
 
-(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35730/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
 var app = (function () {
     'use strict';
 
@@ -2388,7 +2387,7 @@ var app = (function () {
     	return block;
     }
 
-    // (140:53) 
+    // (140:53)
     function create_if_block_2(ctx) {
     	let button;
     	let button_transition;
@@ -4378,7 +4377,7 @@ var app = (function () {
     	return block;
     }
 
-    // (108:30) 
+    // (108:30)
     function create_if_block_2$2(ctx) {
     	let div;
     	let p;
@@ -5097,7 +5096,7 @@ var app = (function () {
     	return block;
     }
 
-    // (117:27) 
+    // (117:27)
     function create_if_block_5(ctx) {
     	let div;
     	let img;
@@ -5173,7 +5172,7 @@ var app = (function () {
     	return block;
     }
 
-    // (112:27) 
+    // (112:27)
     function create_if_block_4(ctx) {
     	let div;
     	let img;
@@ -5240,7 +5239,7 @@ var app = (function () {
     	return block;
     }
 
-    // (107:27) 
+    // (107:27)
     function create_if_block_3$1(ctx) {
     	let div;
     	let img;
@@ -5307,7 +5306,7 @@ var app = (function () {
     	return block;
     }
 
-    // (102:27) 
+    // (102:27)
     function create_if_block_2$3(ctx) {
     	let div;
     	let img;
@@ -5856,7 +5855,7 @@ var app = (function () {
     	return block;
     }
 
-    // (39:29) 
+    // (39:29)
     function create_if_block_2$4(ctx) {
     	let div;
     	let span;
@@ -5904,7 +5903,7 @@ var app = (function () {
     	return block;
     }
 
-    // (35:29) 
+    // (35:29)
     function create_if_block_1$5(ctx) {
     	let div;
     	let span;
@@ -6405,7 +6404,7 @@ var app = (function () {
     	return block;
     }
 
-    // (68:39) 
+    // (68:39)
     function create_if_block_3$2(ctx) {
     	let dialoguebox;
     	let current;
@@ -6451,7 +6450,7 @@ var app = (function () {
     	return block;
     }
 
-    // (64:42) 
+    // (64:42)
     function create_if_block_2$5(ctx) {
     	let dialoguebox;
     	let current;
