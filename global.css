@@ -117,6 +117,7 @@ button {
   outline: none;
   cursor: pointer;
   box-shadow: 0 0 0 0.4rem #F0C25340, 0 0 0 0.8rem #F0C25340;
+  text-shadow: 0.1rem 0.1rem 0.2rem var(--color-yellow-dark);
 }
 
 button:focus, button:hover {
@@ -140,6 +141,7 @@ button:disabled:focus, button:disabled:hover {
 button.green {
   background-color: var(--color-green);
   box-shadow: 0 0 0 0.4rem #465F3540, 0 0 0 0.8rem #465F3540;
+  text-shadow: 0.1rem 0.1rem 0.2rem var(--color-green-dark);
 }
 
 button.green:focus, button.green:hover {
