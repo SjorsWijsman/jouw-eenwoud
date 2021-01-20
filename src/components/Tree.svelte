@@ -1,6 +1,7 @@
 <script>
+import { fly } from 'svelte/transition';
 import { treeStages } from "../data/gameData.js";
-import { user } from "../data/appData.js";
+import { user, dialogue } from "../data/appData.js";
 
 export let tileInfo;
 export let activity = false;
@@ -160,6 +161,28 @@ function scaleValue(value, from, to) {
   position: relative;
 }
 
+@keyframes jump {
+  from {
+    width: 2rem;
+    height: 2rem;
+  }
+  to {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+}
+
+.activity-button {
+  position: absolute;
+  transform: rotate(-45deg) translateY(-900%) scale(1.1, 2.2);
+  border-radius: 50%;
+  animation-name: jump;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
+
 .highlight {
   filter: brightness(110%);
 }
@@ -177,5 +200,10 @@ function scaleValue(value, from, to) {
       alt="boom"
       class="tree"
       style="top: {tileInfo.tree.yOffset}%; left: {tileInfo.tree.xOffset}%; filter: saturate({saturation})">
+  {/if}
+  {#if activity}
+    <button type="button" name="button" class="activity-button"
+    transition:fly="{{ y: 100, duration: 800 }}"
+    on:click={() => dialogue.set("activity")}></button>
   {/if}
 </div>

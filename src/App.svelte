@@ -6,6 +6,7 @@ import Tree from "./components/Tree.svelte";
 import TreeGrid from "./components/TreeGrid.svelte";
 import TreeDetails from "./components/TreeDetails.svelte";
 import PlantTree from "./components/PlantTree.svelte";
+import Activity from "./components/Activity.svelte";
 import DialogueBox from "./components/DialogueBox.svelte";
 import Introduction from "./components/Introduction.svelte";
 import Tutorial from "./components/Tutorial.svelte";
@@ -57,6 +58,10 @@ import {
     {:else if $dialogue === "treeDetails"}
       <DialogueBox>
         <TreeDetails/>
+      </DialogueBox>
+    {:else if $dialogue === "activity"}
+      <DialogueBox>
+        <Activity/>
       </DialogueBox>
     {/if}
   </main>

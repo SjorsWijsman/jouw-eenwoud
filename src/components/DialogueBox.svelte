@@ -22,23 +22,35 @@ import { dialogue } from "../data/appData.js";
   background-color: var(--color-cyan-dark);
   border-radius: 1rem;
   pointer-events: all;
+}
+
+.content {
   overflow: hidden;
 }
 
 .close-button {
   position: relative;
-  top: -0.3rem;
-  right: calc(-100% + 2.3rem);
+  left: calc(100% - 1rem);
+  top: -1rem;
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
   pointer-events: all;
 }
+
+@media only screen and (max-width: 30rem) {
+  .close-button {
+    left: calc(100% - 3rem);
+    top: 1rem;
+  }
+}
 </style>
 
 <div class="dialogue-container">
-  <button type="button" name="button" class="close-button" on:click={() => dialogue.set("")}></button>
   <div class="dialogue" transition:fly="{{y: 200, duration: 300}}">
-    <slot/>
+    <button type="button" name="button" class="close-button" on:click={() => dialogue.set("")}></button>
+    <div class="content">
+      <slot/>
+    </div>
   </div>
 </div>

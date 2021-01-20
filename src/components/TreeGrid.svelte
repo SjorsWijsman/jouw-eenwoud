@@ -35,8 +35,6 @@ function createGrid() {
 
 let selected = false;
 
-// Reset dialogue when selection changes
-$: selected, dialogue.set("");
 // Set selected tile value to selectedTile store
 $: if (selected !== false) selectedTile.set(selected);
 </script>
@@ -97,11 +95,6 @@ h3 {
   transform: translate(10rem, -3rem);
   width: 6rem;
   pointer-events: all;
-}
-
-.tile-button.left {
-  transform: translate(-7rem, -3rem);
-  width: 8rem;
 }
 
 .selected {
