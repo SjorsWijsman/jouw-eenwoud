@@ -1,12 +1,9 @@
 <script>
 export let type;
+export let size = 1.5;
 </script>
 
-<style>
-img {
-  height: 1.5rem;
-  width: 1.5rem;
-}
-</style>
-
-<img src={`./resources/icons/${type}.svg`} alt="{type} icon">
+<img src={`./resources/icons/${type}.svg`} alt="{type} icon" style="
+  height: {size}rem;
+  width: {size}rem;
+">

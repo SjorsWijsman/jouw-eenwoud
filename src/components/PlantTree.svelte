@@ -11,6 +11,7 @@ import {
   currency,
   dialogue,
   selectedTile,
+  tutorialStep,
 } from "../data/appData.js";
 
 const treeCost = 10000;
@@ -19,14 +20,17 @@ let ground = $treeGrid[$selectedTile].ground;
 let selectedTree = treeTypes[0];
 
 function plantTree() {
+  const maxHealth = stepsPerDay * (1 + (1 - ground.growModifier)) * 5;
   $treeGrid[$selectedTile].tree = {
     owner: $user.name,
     type: selectedTree,
-    age: 1,
-    health: stepsPerDay * (1 + (1 - ground.growModifier)) * 4,
+    age: 0,
+    maxHealth: maxHealth,
+    health: maxHealth * .8,
   };
   currency.update(value => {
     value.stappen -= 10000;
+    value.bomen += 1;
     return value;
   });
   dialogue.set("treeDetails");
@@ -52,9 +56,12 @@ p {
 }
 
 .container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem;
+  padding-top: 1.5rem;
 }
 
 .tree-preview {
@@ -134,6 +141,9 @@ button {
     </p>
   </div>
   <footer>
-    <button type="button" name="button" disabled={$currency.stappen < treeCost} on:click={() => plantTree()}>Plant boom</button>
+    <button type="button" name="button" disabled={$currency.stappen < treeCost}
+    on:click={() => plantTree()}
+    on:click|once={() => tutorialStep.set(2)}>
+    Plant boom</button>
   </footer>
 </div>

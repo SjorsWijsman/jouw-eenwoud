@@ -10,13 +10,13 @@ import {
   treeGrid,
   selectedTile,
   currency,
+  tutorialStep,
+  activities,
 } from "../data/appData.js";
 
 let treeHealth;
 let maxTreeHealth;
-$: treeHealth = getTreeHealth($treeGrid[$selectedTile].tree);
-$: maxTreeHealth = (stepsPerDay * (1 + (1 - $treeGrid[$selectedTile].ground.growModifier))) * 5;
-
+$: [treeHealth, maxTreeHealth] = getTreeHealth($treeGrid[$selectedTile].tree);
 const maxAddHealthAmount = 1000;
 let addHealthAmount = maxAddHealthAmount;
 
@@ -24,8 +24,8 @@ $: treeHealth, $currency, setAddHealthAmount();
 
 function getTreeHealth(tree) {
   if (tree) {
-    return tree.health;
-  }
+    return [tree.health, tree.maxHealth];
+  } else return [null,null]
 }
 
 function setAddHealthAmount() {
@@ -66,9 +66,16 @@ p {
 }
 
 .container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem;
+  padding-top: 1.5rem;
+}
+
+.container > * {
+  z-index: 1;
 }
 
 .tree-container {
@@ -121,6 +128,22 @@ footer {
   flex-direction: column;
   align-items: center;
 }
+
+.tree-rings {
+  z-index: 0;
+  position: relative;
+  pointer-events: none;
+  width: 100%;
+  top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.1;
+}
+
+.tree-rings img {
+  position: absolute;
+}
 </style>
 
 {#if $treeGrid[$selectedTile].tree}
@@ -137,7 +160,7 @@ footer {
     </p>
   </header>
   <div class="tree-container">
-    <Tree tileInfo={$treeGrid[$selectedTile]}/>
+    <Tree tileInfo={$treeGrid[$selectedTile]} activity={Object.keys($activities).includes($selectedTile.toString())}/>
   </div>
   <div class="health-container">
     <span>
@@ -148,7 +171,9 @@ footer {
   </div>
   {#if $treeGrid[$selectedTile].tree.owner === $user.name}
     <div class="add-health-container">
-      <button type="button" name="button" disabled={addHealthAmount <= 0} on:click={() => addHealth(addHealthAmount)}>
+      <button type="button" name="button" disabled={addHealthAmount <= 0}
+        on:click={() => addHealth(addHealthAmount)}
+        on:click|once={() => tutorialStep.set(3)}>
         <Icon type={"stappen"}/>
         <span>+{addHealthAmount}</span>
       </button>
@@ -157,5 +182,10 @@ footer {
   <footer>
     <p>{$treeGrid[$selectedTile].tree.age} jaar oud</p>
   </footer>
+  <div class="tree-rings" style="transform: rotate({Math.floor(Math.random() * 361)}deg)">
+  {#each Array($treeGrid[$selectedTile].tree.age + 1) as _, i}
+    <img src={"./resources/treering.svg"} style="transform: scale({0.3 * i})" alt="tree ring">
+  {/each}
+  </div>
 </div>
 {/if}

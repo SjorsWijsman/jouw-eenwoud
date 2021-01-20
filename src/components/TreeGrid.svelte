@@ -10,6 +10,7 @@ import {
   treeGrid,
   dialogue,
   selectedTile,
+  activities
 } from "../data/appData.js";
 import { draggable } from "../scripts/draggable.js";
 
@@ -62,7 +63,7 @@ h3 {
 
 #dragItem {
   position: relative;
-  top: 0;
+  top: -1rem;
   transition: top .3s;
 }
 
@@ -98,6 +99,11 @@ h3 {
   pointer-events: all;
 }
 
+.tile-button.left {
+  transform: translate(-7rem, -3rem);
+  width: 8rem;
+}
+
 .selected {
   transform: translate(-10.5rem, -10.5rem);
 }
@@ -116,7 +122,7 @@ h3 {
       {#each $treeGrid as tile, i}
         <div class="tile-container" class:selected="{selected === i}" style="z-index: {i};">
           <div on:click="{() => selected === i ? selected = false : selected = i}">
-            <Tree tileInfo={tile}/>
+            <Tree tileInfo={tile} activity={Object.keys($activities).includes(i.toString())}/>
           </div>
           {#if selected === i}
             <div class="info-container" transition:fade="{{duration: 300}}">
