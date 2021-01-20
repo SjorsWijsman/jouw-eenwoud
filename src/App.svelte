@@ -1,4 +1,5 @@
 <script>
+import { fly, fade } from 'svelte/transition';
 import Currency from "./components/Currency.svelte";
 import YearCounter from "./components/YearCounter.svelte";
 import Tree from "./components/Tree.svelte";
@@ -6,37 +7,17 @@ import TreeGrid from "./components/TreeGrid.svelte";
 import TreeDetails from "./components/TreeDetails.svelte";
 import PlantTree from "./components/PlantTree.svelte";
 import DialogueBox from "./components/DialogueBox.svelte";
+import Introduction from "./components/Introduction.svelte";
 import {
   currency,
   currentYear,
   dialogue,
   selectedTile,
+  user,
 } from "./data/appData.js";
 </script>
 
 <style>
-* {
-  --max-content-width: 50rem;
-  --height-header: 5rem;
-  --height-footer: 7rem;
-}
-
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  max-height: var(--height-header);
-  z-index: 9999;
-  user-select: none;
-}
-
 .logo {
   position: fixed;
   height: 2.5rem;
@@ -51,54 +32,38 @@ header {
   align-items: center;
   justify-content: space-between;
 }
-
-main {
-  max-width: var(--max-content-width);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-footer {
-  padding: 1.2rem;
-  position: fixed;
-  bottom: 0;
-  height: var(--height-footer);
-  width: 100%;
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  z-index: 9999;
-  user-select: none;
-}
 </style>
 
-<header>
-  <div class="header-container">
-    <div on:click={() => currency.update(value => {
-      value.stappen += 1000;
-      return value;
-    })}>
-      <Currency displayCurrency="stappen"/>
+{#if $user.introduction}
+  <Introduction/>
+{:else}
+  <header transition:fly="{{ y: -100, duration: 800 }}">
+    <div class="header-container">
+      <div on:click={() => currency.update(value => {
+        value.stappen += 800;
+        return value;
+      })}>
+        <Currency displayCurrency="stappen"/>
+      </div>
+      <span>profiel</span>
     </div>
-    <span>profiel</span>
-  </div>
-  <img class="logo" src="./resources/icons/eenwoud.svg" alt="Eenwoud Logo">
-</header>
-<main>
-  <TreeGrid/>
-  {#if $dialogue === "plantTree"}
-    <DialogueBox>
-      <PlantTree/>
-    </DialogueBox>
-  {:else if $dialogue === "treeDetails"}
-    <DialogueBox>
-      <TreeDetails/>
-    </DialogueBox>
-  {/if}
-</main>
-<footer>
-  <div on:click={() => currentYear.set($currentYear + 1)}>
-    <YearCounter/>
-  </div>
-</footer>
+    <img class="logo" src="./resources/icons/eenwoud.svg" alt="Eenwoud Logo">
+  </header>
+  <main transition:fade="{{ duration: 800 }}">
+    <TreeGrid/>
+    {#if $dialogue === "plantTree"}
+      <DialogueBox>
+        <PlantTree/>
+      </DialogueBox>
+    {:else if $dialogue === "treeDetails"}
+      <DialogueBox>
+        <TreeDetails/>
+      </DialogueBox>
+    {/if}
+  </main>
+  <footer transition:fly="{{ y: 100, duration: 800 }}">
+    <div on:click={() => currentYear.set($currentYear + 1)}>
+      <YearCounter/>
+    </div>
+  </footer>
+{/if}

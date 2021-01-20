@@ -108,7 +108,7 @@ h3 {
 </style>
 
 <Simulation/>
-<div id="container">
+<div id="container" transition:fly="{{ y: 100, duration: 800 }}">
   <div id="dragItem" class:selected-container="{selected !== false}">
     <div class="tree-grid" style="
       grid-template-columns: repeat({gridSize},5rem);

@@ -2,7 +2,8 @@ import { writable } from "svelte/store"
 
 // Create writable stores
 export const user = writable({
-  name: "Gebruiker"
+  name: "Gebruiker",
+  introduction: true,
 })
 export const treeGrid = writable([])
 export const currency = writable({
@@ -14,7 +15,8 @@ export const selectedTile = writable(undefined)
 
 export function resetData() {
   user.set({
-    name: "Gebruiker"
+    name: "Gebruiker",
+    introduction: true,
   })
   treeGrid.set([])
   currency.set({
@@ -25,7 +27,7 @@ export function resetData() {
   selectedTile.set(undefined);
 }
 
-// Prevent negative values
+// Prevent negative currency values
 currency.subscribe(value => {
   for (const currency of Object.keys(value)) {
     if (value[currency] < 0) {
