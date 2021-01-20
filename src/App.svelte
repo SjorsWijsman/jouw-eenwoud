@@ -8,6 +8,8 @@ import TreeDetails from "./components/TreeDetails.svelte";
 import PlantTree from "./components/PlantTree.svelte";
 import DialogueBox from "./components/DialogueBox.svelte";
 import Introduction from "./components/Introduction.svelte";
+import Tutorial from "./components/Tutorial.svelte";
+import Icon from "./components/Icon.svelte";
 import {
   currency,
   currentYear,
@@ -18,11 +20,6 @@ import {
 </script>
 
 <style>
-.logo {
-  position: fixed;
-  height: 2.5rem;
-}
-
 .header-container {
   max-width: var(--max-content-width);
   padding: 0 1.2rem;
@@ -38,16 +35,18 @@ import {
   <Introduction/>
 {:else}
   <header transition:fly="{{ y: -100, duration: 800 }}">
+    <Tutorial/>
     <div class="header-container">
       <div on:click={() => currency.update(value => {
-        value.stappen += 800;
+        value.stappen += 2000;
         return value;
       })}>
-        <Currency displayCurrency="stappen"/>
+        <Currency displayCurrency={"stappen"}/>
       </div>
-      <span>profiel</span>
+      <div>
+        <Currency displayCurrency={"bomen"} inverted={true}/>
+      </div>
     </div>
-    <img class="logo" src="./resources/icons/eenwoud.svg" alt="Eenwoud Logo">
   </header>
   <main transition:fade="{{ duration: 800 }}">
     <TreeGrid/>

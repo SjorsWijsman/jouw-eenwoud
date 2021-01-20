@@ -5,6 +5,7 @@ import { tweened } from 'svelte/motion';
 import { cubicOut } from 'svelte/easing';
 
 export let displayCurrency = "stappen";
+export let inverted = false;
 
 const amount = tweened($currency[displayCurrency], {
 	duration: 400,
@@ -26,14 +27,22 @@ p {
 	min-width: 6ch;
 }
 
+span {
+	padding: 0 0.2rem;
+}
+
 .negative {
   color: var(--color-red);
+}
+
+.inverted {
+	flex-direction: row-reverse;
 }
 </style>
 
 <div class="currency">
-  <p class:negative="{$amount < 0}">
+  <p class:negative="{$amount < 0}" class:inverted>
 		<Icon type={displayCurrency}/>
-    {Math.floor($amount).toLocaleString("NL-NL")}
+    <span>{Math.floor($amount).toLocaleString("NL-NL")}</span>
   </p>
 </div>

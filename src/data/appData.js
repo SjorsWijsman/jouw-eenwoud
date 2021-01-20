@@ -3,29 +3,18 @@ import { writable } from "svelte/store"
 // Create writable stores
 export const user = writable({
   name: "Gebruiker",
-  introduction: true,
-})
-export const treeGrid = writable([])
+  introduction: false,
+});
+export const treeGrid = writable([]);
 export const currency = writable({
   stappen: 12500,
-})
-export const currentYear = writable(35)
-export const dialogue = writable(undefined)
-export const selectedTile = writable(undefined)
-
-export function resetData() {
-  user.set({
-    name: "Gebruiker",
-    introduction: true,
-  })
-  treeGrid.set([])
-  currency.set({
-    stappen: 12500,
-  });
-  currentYear.set(35);
-  dialogue.set(undefined);
-  selectedTile.set(undefined);
-}
+  bomen: 0,
+});
+export const currentYear = writable(35);
+export const dialogue = writable(undefined);
+export const selectedTile = writable(undefined);
+export const tutorialStep = writable(1);
+export const activities = writable({});
 
 // Prevent negative currency values
 currency.subscribe(value => {
@@ -35,4 +24,4 @@ currency.subscribe(value => {
     }
   }
   return value;
-})
+});

@@ -3,8 +3,10 @@ import { treeStages } from "../data/gameData.js";
 import { user } from "../data/appData.js";
 
 export let tileInfo;
+export let activity = false;
 
 let treeStage = 1;
+let saturation = 1;
 
 $: if (tileInfo.tree) {
   for (const stage of Object.keys(treeStages)) {
@@ -15,6 +17,16 @@ $: if (tileInfo.tree) {
       break;
     }
   }
+  if (tileInfo.tree.health > 0) {
+    saturation = scaleValue(tileInfo.tree.health, [0, tileInfo.tree.maxHealth], [0.85, 1.1])
+  }
+}
+
+// https://gist.github.com/fpillet/993002
+function scaleValue(value, from, to) {
+	var scale = (to[1] - to[0]) / (from[1] - from[0]);
+	var capped = Math.min(from[1], Math.max(from[0], value)) - from[0];
+	return (capped * scale + to[0]);
 }
 </script>
 
@@ -41,6 +53,7 @@ $: if (tileInfo.tree) {
   align-items: center;
   background-color: var(--color-grass);
   transition: all .3s;
+  transition: background 0s;
   cursor: pointer;
 }
 
@@ -68,6 +81,10 @@ $: if (tileInfo.tree) {
   background-color: var(--color-grass);
 }
 
+.grass.activity {
+  background: radial-gradient(white, var(--color-yellow), var(--color-grass));
+}
+
 .grass::before {
   background: linear-gradient(90deg,
     var(--color-grass-light) 0%,
@@ -86,6 +103,10 @@ $: if (tileInfo.tree) {
 
 .sand {
   background-color: var(--color-sand);
+}
+
+.sand.activity {
+  background: radial-gradient(white, var(--color-yellow), var(--color-sand));
 }
 
 .sand::before {
@@ -148,12 +169,13 @@ $: if (tileInfo.tree) {
   class:grass="{tileInfo.ground.type === 'gras'}"
   class:sand="{tileInfo.ground.type === 'zand'}"
   class:water="{tileInfo.ground.type === 'water'}"
-  class:highlight="{tileInfo.tree && tileInfo.tree.owner === $user.name}">
+  class:highlight="{tileInfo.tree && tileInfo.tree.owner === $user.name}"
+  class:activity>
   {#if tileInfo.tree}
     <img
       src={`resources/${tileInfo.tree.type}-${treeStage}.svg`}
       alt="boom"
       class="tree"
-      style="top: {tileInfo.tree.yOffset}%; left: {tileInfo.tree.xOffset}%">
+      style="top: {tileInfo.tree.yOffset}%; left: {tileInfo.tree.xOffset}%; filter: saturate({saturation})">
   {/if}
 </div>

@@ -24,3 +24,7 @@ export const treeStages = {
   7: 2,
   30: 3,
 }
+
+export const activities = {
+  
+}
