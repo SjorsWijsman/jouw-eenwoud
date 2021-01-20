@@ -1,11 +1,11 @@
 html {
-  --color-green-light: #81A18F;
   --color-green: #465F35;
   --color-green-dark: #28381F;
   --color-yellow: #F0C253;
   --color-yellow-dark: #bf942e;
   --color-gray: #C8D8DF;
   --color-gray-dark: #415963;
+  --color-gray-dark-transparent: #41596330;
   --color-red: #C14444;
   --color-white: #FFFFFF;
   --color-cyan: #64BAAA;
@@ -54,6 +54,11 @@ body > header {
   max-height: var(--height-header);
   z-index: 9999;
   user-select: none;
+  pointer-events: none;
+}
+
+body > header * {
+  pointer-events: all;
 }
 
 body > main {
@@ -74,6 +79,11 @@ body > footer {
   align-items: center;
   z-index: 9999;
   user-select: none;
+  pointer-events: none;
+}
+
+body > footer * {
+  pointer-events: all;
 }
 
 h1 {
