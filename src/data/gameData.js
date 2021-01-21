@@ -1,5 +1,4 @@
-export const groundTypes = [
-  {
+export const groundTypes = [{
     type: "gras",
     growModifier: 1,
   },
@@ -24,3 +23,7 @@ export const treeStages = {
   7: 2,
   30: 3,
 }
+
+export const randomNames = [
+  "Suze", "Naomi", "Frank", "Didier", "Nadine", "Soraya", "Femke", "Maaike", "Anthony", "Sara", "Jan-Jaap", "Laurens", "Roos", "Sjors", "Veerle", "Victor"
+];

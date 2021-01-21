@@ -2,6 +2,7 @@
 import {
   treeTypes,
   stepsPerDay,
+  randomNames,
 } from "../data/gameData.js";
 import {
   treeGrid,
@@ -24,7 +25,7 @@ function randomlyPlantTrees(grid) {
         age: Math.floor(Math.random() * 35) - 1,
         xOffset: Math.floor(Math.random() * 26) - 12.5,
         yOffset: Math.floor(Math.random() * 26) - 12.5,
-        owner: "Henk",
+        owner: randomNames[Math.floor(Math.random() * randomNames.length)],
         maxHealth: maxHealth,
         health: Math.floor(Math.random() * maxHealth + 1),
       }

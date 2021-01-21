@@ -94,7 +94,9 @@ footer {
 <div class="container">
   <header>
     <h2>{activity.type}</h2>
-    <p class="activity">{activity.text}</p>
+    {#if correct === undefined}
+      <p class="activity">{activity.text}</p>
+    {/if}
   </header>
   {#if correct === true}
     <div>

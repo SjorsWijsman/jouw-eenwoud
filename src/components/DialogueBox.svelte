@@ -29,7 +29,8 @@ import { dialogue } from "../data/appData.js";
 }
 
 .close-button {
-  position: relative;
+  position: absolute;
+  z-index: 99;
   left: calc(100% - 1rem);
   top: -1rem;
   width: 2rem;
