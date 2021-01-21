@@ -63,7 +63,10 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transform: scale(1);
+}
+
+.eenwoud-logo-container > div {
+  font-size: 1.3rem;
 }
 
 img.eenwoud-logo {
