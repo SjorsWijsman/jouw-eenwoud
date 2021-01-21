@@ -35,6 +35,7 @@ $: if (currentStep > totalSteps) {
 main {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100%;
@@ -44,25 +45,24 @@ main {
 
 .introduction-container {
   position: fixed;
-  max-width: calc(var(--max-content-width) - 20rem);
+  max-width: calc(var(--max-content-width) - 18rem);
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-.introduction-container span, .introduction-container div {
-  margin-top: 2rem;
-  font-size: 1.1rem;
   text-align: center;
 }
 
 .introduction-container img {
   position: relative;
-  width: 100%;
-  max-height: 20rem;
+  min-width: 100%;
+  height: 100%;
+  margin: 1rem;
 }
 
 .eenwoud-logo-container {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   transform: scale(1.1);
 }
 
@@ -74,6 +74,9 @@ img.eenwoud-logo {
 
 span.next-text {
   margin-bottom: 1rem;
+  margin-top: calc(2vh);
+  font-size: 1rem;
+  opacity: 0.8;
 }
 
 button.next-button {
@@ -95,30 +98,25 @@ button.next-button {
 {#if currentStep == 1}
   <div class="introduction-container" in:fly="{{ delay: 300, x: 100, duration: 300 }}" out:fly="{{ x: -100, duration: 300 }}">
     <div class="eenwoud-logo-container">
-      <span>Welkom bij</span>
-      <img class="eenwoud-logo" src={"./resources/introduction/eenwoud-logo.svg"} alt="Eenwoud logo">
+      <div>Welkom bij</div>
+      <img class="eenwoud-logo" src={"./resources/introduction/eenwoud-logo.svg"} alt="Eenwoud">
     </div>
   </div>
 {:else if currentStep == 2}
   <div class="introduction-container" in:fly="{{ delay: 300, x: 100, duration: 300 }}" out:fly="{{ x: -100, duration: 300 }}">
-    <img src={"./resources/introduction/eenwoud-example.svg"} alt="Eenwoud voorbeeld">
-    <span>Maak deel uit van een gezamelijk, virtueel bos met dezelfde principes en waarden van het echte Eenwoud</span>
+    <img src={"./resources/introduction/eenwoud-example.svg"} alt="Maak deel uit van een gezamelijk, virtueel bos met dezelfde waarden en principes van het echte Eenwoud.">
   </div>
 {:else if currentStep == 3}
   <div class="introduction-container" in:fly="{{ delay: 300, x: 100, duration: 300 }}" out:fly="{{ x: -100, duration: 300 }}">
-    <img src={"./resources/introduction/tree-example.svg"} alt="Boom voorbeeld">
-    <span>Verzorg en groei je eigen boom door zelf gezond te leven</span>
+    <img src={"./resources/introduction/tree-example.svg"} alt="Verzorg en groei je eigen boom door zelf gezond te leven.">
   </div>
 {:else if currentStep == 4}
   <div class="introduction-container" in:fly="{{ delay: 300, x: 100, duration: 300 }}" out:fly="{{ x: -100, duration: 300 }}">
-    <img src={"./resources/introduction/icons.svg"} alt="Iconen wandelingen, water, recyclen">
-    <span>Doe dit door dagelijks een wandelingetje te maken, genoeg water te drinken en te recyclen</span>
+    <img src={"./resources/introduction/health.svg"} alt="Iconen wandelingen, water, recyclen">
   </div>
 {:else if currentStep == 5}
   <div class="introduction-container" in:fly="{{ delay: 300, x: 100, duration: 300 }}" out:fly="{{ x: -100, duration: 300 }}">
     <img src={"./resources/introduction/tree.svg"} alt="Boom">
-    <span>Kom meer te weten over bomen en het milleu door vragen te beantwoorden.</span>
-    <span>Gebruik deze kennis en punten om de omgeving van jouw boom gezond te houden!</span>
   </div>
 {/if}
 </main>
