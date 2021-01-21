@@ -47,6 +47,7 @@ main {
   position: fixed;
   max-width: calc(var(--max-content-width) - 18rem);
   width: 100%;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -56,14 +57,13 @@ main {
   position: relative;
   min-width: 100%;
   height: 100%;
-  margin: 1rem;
 }
 
 .eenwoud-logo-container {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transform: scale(1.1);
+  transform: scale(1);
 }
 
 img.eenwoud-logo {

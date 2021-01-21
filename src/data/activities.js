@@ -8,7 +8,7 @@ export const activitiesList = [{
       },
       "Bacteriën": {
         correct: false,
-        resultText: "Helaas, er komen geen bacteriën. Berkenzwammen veroorzaken houtrot. Je krijgt jammer genoeg geen stappen."
+        resultText: "Helaas, er komen geen bacteriën. Berkenzwammen veroorzaken houtrot. Je hebt jammer genoeg geen stappen verdiend."
       },
     }
   },
@@ -16,19 +16,19 @@ export const activitiesList = [{
     text: "Bossen worden wel eens de groene longen van onze aarde genoemd. Waarom is dat?",
     type: "Quiz-vraag",
     choices: {
-      "omdat ze overdag koolstofdioxide (CO2) opslaan en zuurstof afgeven": {
+      "Omdat ze overdag koolstofdioxide (CO2) opslaan en zuurstof afgeven.": {
         correct: true,
         resultText: "Wauw, je ontvangt stappen omdat je het goeie antwoord hebt gegeven! Ga zo door. "
       },
-      "omdat ze 's nachts koolstofdioxide (CO2) opslaan en zuurstof afgeven": {
+      "Omdat ze 's nachts koolstofdioxide (CO2) opslaan en zuurstof afgeven.": {
         correct: false,
-        resultText: "Jammer, bossen slaan overdag koolstofdioxide (CO2) op en geven zuurstof af niet 's nachts. Je krijgt geen stappen. "
+        resultText: "Jammer, bossen slaan overdag koolstofdioxide (CO2) op en geven zuurstof af; niet 's nachts. Je krijgt geen stappen."
       },
-      "omdat ze op satellietbeelden de vorm van longen hebben": {
+      "Omdat ze op satellietbeelden de vorm van longen hebben.": {
         correct: false,
-        resultText: "Ohjee, nee bossen worden wel eens de groene longen van onze aarde genoemd omdat ze overdag koolstofdioxide (CO2) opslaan en zuurstof afgeven. Je krijgt helaas geen stappen. "
+        resultText: "Ohjee, nee bossen worden wel eens de groene longen van onze aarde genoemd omdat ze overdag koolstofdioxide (CO2) opslaan en zuurstof afgeven. Je ontvangt helaas geen stappen. "
       },
-      "omdat bossen zwaveldioxide filteren": {
+      "Omdat bossen zwaveldioxide filteren.": {
         correct: false,
         resultText: "Helaas het antwoord is niet goed. Het antwoord moest zijn dat bossen over koolstofdioxide (CO2) opslaan en zuurstof afgeven. Volgende keer beter!"
       },
@@ -40,19 +40,19 @@ export const activitiesList = [{
     choices: {
       "1 voetbalveld": {
         correct: false,
-        resultText: "Jammer het is geen 1 voetbalveld, maar 8x meer!"
+        resultText: "Jammer het is geen 1 voetbalveld, maar 8x zoveel!"
       },
-      "4 voetbalveld": {
+      "4 voetbalvelden": {
         correct: false,
         resultText: "Helaas, een gemiddelde Nederlander gebruikt 8 voetbalvelden. Dat is 2x zoveel!"
       },
-      "8 voetbalveld": {
+      "8 voetbalvelden": {
         correct: true,
-        resultText: "Klopt! Een gemiddelde Nederlander verbruikt 8 voetbalvelden, veel hé. Je ontvangt stappen omdat je het goeie antwoord hebt."
+        resultText: "Klopt! Een gemiddelde Nederlander verbruikt 8 voetbalvelden, veel hè? Je ontvangt stappen omdat je het goeie antwoord hebt."
       },
-      "10 voetbalveld": {
+      "10 voetbalvelden": {
         correct: false,
-        resultText: "Ah nee, een gemiddelde Nederlander verbruikt 8 voetbalvelden. Jammer volgende keer beter!"
+        resultText: "Ah nee, een gemiddelde Nederlander verbruikt 8 voetbalvelden. Jammer, volgende keer beter!"
       },
     }
   },
@@ -60,21 +60,21 @@ export const activitiesList = [{
     text: "Waarmee kun je de meeste CO2 uitstoot besparen?",
     type: "Quiz-vraag",
     choices: {
-      "Je huis zuinig verwarmen": {
+      "Je huis zuinig verwarmen.": {
         correct: true,
-        resultText: "Het klinkt alsof je bewust bent van je eigen gedrag op het milieu!, complimenten! Je verdient extra stappen!"
+        resultText: "Het klinkt alsof je bewust bent van je eigen gedrag op het milieu, complimenten! Je verdient extra stappen!"
       },
-      "Maximaal 5 min. douchen": {
+      "Maximaal 5 min. douchen.": {
         correct: false,
         resultText: "Helaas, het beste is om je huis zuinig te verwamren."
       },
-      "Geen wasdroger of vaatwasser gebruiken": {
+      "Geen wasdroger of vaatwasser gebruiken.": {
         correct: false,
         resultText: "Wat jammer, het goede antwoord is je huis zuinig verwarmen."
       },
-      "Lichten en stopcontacten niet gebruiken wanneer de kamer niet wordt gebruikt": {
+      "Lichten en stopcontacten niet gebruiken wanneer de kamer niet wordt gebruikt.": {
         correct: false,
-        resultText: "Helaas, dit zou kunnen helpen op je energierekening, maar om de CO2 uitstoot besparen is om je huis zuinig te verwarmen"
+        resultText: "Helaas, dit zou kunnen helpen op je energierekening, maar om de CO2 uitstoot besparen is om je huis zuinig te verwarmen."
       },
     }
   },

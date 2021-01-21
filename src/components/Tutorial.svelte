@@ -1,4 +1,5 @@
 <script>
+import { fly } from 'svelte/transition';
 import Icon from "./Icon.svelte";
 import {
   tutorialStep,
@@ -29,19 +30,19 @@ let totalSteps = 3;
 
 <div class="container">
 {#if $tutorialStep == 1}
-  <div class="tutorial-container">
+  <div class="tutorial-container" out:fly="{{ y: 50, duration: 300 }}">
     <span>{$tutorialStep}.</span> Plant je eerste boom
   </div>
 {:else if $tutorialStep == 2}
-  <div class="tutorial-container">
+  <div class="tutorial-container" in:fly="{{ delay: 300, y: -50, duration: 300 }}" out:fly="{{ y: 50, duration: 300 }}">
     <span>{$tutorialStep}.</span> Geef je boom voeding
   </div>
 {:else if $tutorialStep == 3}
-  <div class="tutorial-container">
+  <div class="tutorial-container" in:fly="{{ delay: 300, y: -50, duration: 300 }}" out:fly="{{ y: 50, duration: 300 }}">
     <span>{$tutorialStep}.</span> Voltooi een gebeurtenis
   </div>
 {:else}
-  <div class="tutorial-container">
+  <div in:fly="{{ delay: 300, y: -50, duration: 300 }}">
     <Icon type={"eenwoud"} size={2.3}/>
   </div>
 {/if}

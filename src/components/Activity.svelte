@@ -6,6 +6,7 @@ import {
   activeActivity,
   dialogue,
   currency,
+  tutorialStep,
 } from "../data/appData.js";
 import { activitiesList } from "../data/activities.js";
 
@@ -114,10 +115,14 @@ footer {
   {:else}
     <div class="options">
       {#each Object.keys(activity.choices) as option}
-        <button type="button" name="button" on:click={() => {
-          correct = activity.choices[option].correct;
-          chosenOption = option;
-        }}>{option}</button>
+        <button type="button" name="button"
+          on:click|once={() => tutorialStep.set(4)}
+          on:click={() => {
+            correct = activity.choices[option].correct;
+            chosenOption = option;
+          }}>
+          {option}
+        </button>
       {/each}
     </div>
   {/if}
