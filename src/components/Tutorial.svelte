@@ -6,7 +6,12 @@ import {
   currency,
 } from "../data/appData.js";
 
-let totalSteps = 3;
+let currentStep = 1;
+
+tutorialStep.subscribe(value => {
+  if (value - 1 === currentStep) currentStep = value;
+  return value;
+})
 </script>
 
 <style>
@@ -29,17 +34,17 @@ let totalSteps = 3;
 </style>
 
 <div class="container">
-{#if $tutorialStep == 1}
+{#if currentStep == 1}
   <div class="tutorial-container" out:fly="{{ y: 50, duration: 300 }}">
-    <span>{$tutorialStep}.</span> Plant je eerste boom
+    <span>{currentStep}.</span> Plant je eerste boom
   </div>
-{:else if $tutorialStep == 2}
+{:else if currentStep == 2}
   <div class="tutorial-container" in:fly="{{ delay: 300, y: -50, duration: 300 }}" out:fly="{{ y: 50, duration: 300 }}">
-    <span>{$tutorialStep}.</span> Geef je boom voeding
+    <span>{currentStep}.</span> Geef je boom voeding
   </div>
-{:else if $tutorialStep == 3}
+{:else if currentStep == 3}
   <div class="tutorial-container" in:fly="{{ delay: 300, y: -50, duration: 300 }}" out:fly="{{ y: 50, duration: 300 }}">
-    <span>{$tutorialStep}.</span> Voltooi een gebeurtenis
+    <span>{currentStep}.</span> Los een gebeurtenis op
   </div>
 {:else}
   <div in:fly="{{ delay: 300, y: -50, duration: 300 }}">
