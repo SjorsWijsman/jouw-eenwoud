@@ -1,4 +1,5 @@
 
+(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35730/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
 var app = (function () {
     'use strict';
 
@@ -2387,7 +2388,7 @@ var app = (function () {
     	return block;
     }
 
-    // (140:53)
+    // (140:53) 
     function create_if_block_2(ctx) {
     	let button;
     	let button_transition;
@@ -4377,7 +4378,7 @@ var app = (function () {
     	return block;
     }
 
-    // (108:30)
+    // (108:30) 
     function create_if_block_2$2(ctx) {
     	let div;
     	let p;
@@ -5046,7 +5047,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (89:4) {#each Array(totalSteps) as _, i}
+    // (92:4) {#each Array(totalSteps) as _, i}
     function create_each_block$4(ctx) {
     	let span;
     	let mounted;
@@ -5059,9 +5060,9 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			span = element("span");
-    			attr_dev(span, "class", "step svelte-jco136");
+    			attr_dev(span, "class", "step svelte-1x1gfdu");
     			toggle_class(span, "active", /*currentStep*/ ctx[0] == /*i*/ ctx[5] + 1);
-    			add_location(span, file$a, 89, 6, 1492);
+    			add_location(span, file$a, 92, 6, 1557);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -5089,22 +5090,18 @@ var app = (function () {
     		block,
     		id: create_each_block$4.name,
     		type: "each",
-    		source: "(89:4) {#each Array(totalSteps) as _, i}",
+    		source: "(92:4) {#each Array(totalSteps) as _, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (117:27)
+    // (117:27) 
     function create_if_block_5(ctx) {
     	let div;
     	let img;
     	let img_src_value;
-    	let t0;
-    	let span0;
-    	let t2;
-    	let span1;
     	let div_intro;
     	let div_outro;
     	let current;
@@ -5113,30 +5110,16 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			img = element("img");
-    			t0 = space();
-    			span0 = element("span");
-    			span0.textContent = "Kom meer te weten over bomen en het milleu door vragen te beantwoorden.";
-    			t2 = space();
-    			span1 = element("span");
-    			span1.textContent = "Gebruik deze kennis en punten om de omgeving van jouw boom gezond te houden!";
     			if (img.src !== (img_src_value = "./resources/introduction/tree.svg")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "Boom");
-    			attr_dev(img, "class", "svelte-jco136");
-    			add_location(img, file$a, 118, 4, 3224);
-    			attr_dev(span0, "class", "svelte-jco136");
-    			add_location(span0, file$a, 119, 4, 3287);
-    			attr_dev(span1, "class", "svelte-jco136");
-    			add_location(span1, file$a, 120, 4, 3376);
-    			attr_dev(div, "class", "introduction-container svelte-jco136");
-    			add_location(div, file$a, 117, 2, 3095);
+    			attr_dev(img, "class", "svelte-1x1gfdu");
+    			add_location(img, file$a, 118, 4, 3111);
+    			attr_dev(div, "class", "introduction-container svelte-1x1gfdu");
+    			add_location(div, file$a, 117, 2, 2982);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
     			append_dev(div, img);
-    			append_dev(div, t0);
-    			append_dev(div, span0);
-    			append_dev(div, t2);
-    			append_dev(div, span1);
     			current = true;
     		},
     		i: function intro(local) {
@@ -5172,13 +5155,11 @@ var app = (function () {
     	return block;
     }
 
-    // (112:27)
+    // (113:27) 
     function create_if_block_4(ctx) {
     	let div;
     	let img;
     	let img_src_value;
-    	let t0;
-    	let span;
     	let div_intro;
     	let div_outro;
     	let current;
@@ -5187,23 +5168,16 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			img = element("img");
-    			t0 = space();
-    			span = element("span");
-    			span.textContent = "Doe dit door dagelijks een wandelingetje te maken, genoeg water te drinken en te recyclen";
-    			if (img.src !== (img_src_value = "./resources/introduction/icons.svg")) attr_dev(img, "src", img_src_value);
+    			if (img.src !== (img_src_value = "./resources/introduction/health.svg")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "Iconen wandelingen, water, recyclen");
-    			attr_dev(img, "class", "svelte-jco136");
-    			add_location(img, file$a, 113, 4, 2858);
-    			attr_dev(span, "class", "svelte-jco136");
-    			add_location(span, file$a, 114, 4, 2953);
-    			attr_dev(div, "class", "introduction-container svelte-jco136");
-    			add_location(div, file$a, 112, 2, 2729);
+    			attr_dev(img, "class", "svelte-1x1gfdu");
+    			add_location(img, file$a, 114, 4, 2851);
+    			attr_dev(div, "class", "introduction-container svelte-1x1gfdu");
+    			add_location(div, file$a, 113, 2, 2722);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
     			append_dev(div, img);
-    			append_dev(div, t0);
-    			append_dev(div, span);
     			current = true;
     		},
     		i: function intro(local) {
@@ -5232,20 +5206,18 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(112:27) ",
+    		source: "(113:27) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (107:27)
+    // (109:27) 
     function create_if_block_3$1(ctx) {
     	let div;
     	let img;
     	let img_src_value;
-    	let t0;
-    	let span;
     	let div_intro;
     	let div_outro;
     	let current;
@@ -5254,23 +5226,16 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			img = element("img");
-    			t0 = space();
-    			span = element("span");
-    			span.textContent = "Verzorg en groei je eigen boom door zelf gezond te leven";
     			if (img.src !== (img_src_value = "./resources/introduction/tree-example.svg")) attr_dev(img, "src", img_src_value);
-    			attr_dev(img, "alt", "Boom voorbeeld");
-    			attr_dev(img, "class", "svelte-jco136");
-    			add_location(img, file$a, 108, 4, 2539);
-    			attr_dev(span, "class", "svelte-jco136");
-    			add_location(span, file$a, 109, 4, 2620);
-    			attr_dev(div, "class", "introduction-container svelte-jco136");
-    			add_location(div, file$a, 107, 2, 2410);
+    			attr_dev(img, "alt", "Verzorg en groei je eigen boom door zelf gezond te leven.");
+    			attr_dev(img, "class", "svelte-1x1gfdu");
+    			add_location(img, file$a, 110, 4, 2563);
+    			attr_dev(div, "class", "introduction-container svelte-1x1gfdu");
+    			add_location(div, file$a, 109, 2, 2434);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
     			append_dev(div, img);
-    			append_dev(div, t0);
-    			append_dev(div, span);
     			current = true;
     		},
     		i: function intro(local) {
@@ -5299,20 +5264,18 @@ var app = (function () {
     		block,
     		id: create_if_block_3$1.name,
     		type: "if",
-    		source: "(107:27) ",
+    		source: "(109:27) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (102:27)
+    // (105:27) 
     function create_if_block_2$3(ctx) {
     	let div;
     	let img;
     	let img_src_value;
-    	let t0;
-    	let span;
     	let div_intro;
     	let div_outro;
     	let current;
@@ -5321,23 +5284,16 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			img = element("img");
-    			t0 = space();
-    			span = element("span");
-    			span.textContent = "Maak deel uit van een gezamelijk, virtueel bos met dezelfde principes en waarden van het echte Eenwoud";
     			if (img.src !== (img_src_value = "./resources/introduction/eenwoud-example.svg")) attr_dev(img, "src", img_src_value);
-    			attr_dev(img, "alt", "Eenwoud voorbeeld");
-    			attr_dev(img, "class", "svelte-jco136");
-    			add_location(img, file$a, 103, 4, 2168);
-    			attr_dev(span, "class", "svelte-jco136");
-    			add_location(span, file$a, 104, 4, 2255);
-    			attr_dev(div, "class", "introduction-container svelte-jco136");
-    			add_location(div, file$a, 102, 2, 2039);
+    			attr_dev(img, "alt", "Maak deel uit van een gezamelijk, virtueel bos met dezelfde waarden en principes van het echte Eenwoud.");
+    			attr_dev(img, "class", "svelte-1x1gfdu");
+    			add_location(img, file$a, 106, 4, 2226);
+    			attr_dev(div, "class", "introduction-container svelte-1x1gfdu");
+    			add_location(div, file$a, 105, 2, 2097);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
     			append_dev(div, img);
-    			append_dev(div, t0);
-    			append_dev(div, span);
     			current = true;
     		},
     		i: function intro(local) {
@@ -5366,71 +5322,70 @@ var app = (function () {
     		block,
     		id: create_if_block_2$3.name,
     		type: "if",
-    		source: "(102:27) ",
+    		source: "(105:27) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (95:0) {#if currentStep == 1}
+    // (98:0) {#if currentStep == 1}
     function create_if_block_1$4(ctx) {
+    	let div2;
     	let div1;
     	let div0;
-    	let span;
     	let t1;
     	let img;
     	let img_src_value;
-    	let div1_intro;
-    	let div1_outro;
+    	let div2_intro;
+    	let div2_outro;
     	let current;
 
     	const block = {
     		c: function create() {
+    			div2 = element("div");
     			div1 = element("div");
     			div0 = element("div");
-    			span = element("span");
-    			span.textContent = "Welkom bij";
+    			div0.textContent = "Welkom bij";
     			t1 = space();
     			img = element("img");
-    			attr_dev(span, "class", "svelte-jco136");
-    			add_location(span, file$a, 97, 6, 1863);
-    			attr_dev(img, "class", "eenwoud-logo svelte-jco136");
+    			add_location(div0, file$a, 100, 6, 1928);
+    			attr_dev(img, "class", "eenwoud-logo svelte-1x1gfdu");
     			if (img.src !== (img_src_value = "./resources/introduction/eenwoud-logo.svg")) attr_dev(img, "src", img_src_value);
-    			attr_dev(img, "alt", "Eenwoud logo");
-    			add_location(img, file$a, 98, 6, 1893);
-    			attr_dev(div0, "class", "eenwoud-logo-container svelte-jco136");
-    			add_location(div0, file$a, 96, 4, 1820);
-    			attr_dev(div1, "class", "introduction-container svelte-jco136");
-    			add_location(div1, file$a, 95, 2, 1691);
+    			attr_dev(img, "alt", "Eenwoud");
+    			add_location(img, file$a, 101, 6, 1956);
+    			attr_dev(div1, "class", "eenwoud-logo-container svelte-1x1gfdu");
+    			add_location(div1, file$a, 99, 4, 1885);
+    			attr_dev(div2, "class", "introduction-container svelte-1x1gfdu");
+    			add_location(div2, file$a, 98, 2, 1756);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div1, anchor);
+    			insert_dev(target, div2, anchor);
+    			append_dev(div2, div1);
     			append_dev(div1, div0);
-    			append_dev(div0, span);
-    			append_dev(div0, t1);
-    			append_dev(div0, img);
+    			append_dev(div1, t1);
+    			append_dev(div1, img);
     			current = true;
     		},
     		i: function intro(local) {
     			if (current) return;
 
     			add_render_callback(() => {
-    				if (div1_outro) div1_outro.end(1);
-    				if (!div1_intro) div1_intro = create_in_transition(div1, fly, { delay: 300, x: 100, duration: 300 });
-    				div1_intro.start();
+    				if (div2_outro) div2_outro.end(1);
+    				if (!div2_intro) div2_intro = create_in_transition(div2, fly, { delay: 300, x: 100, duration: 300 });
+    				div2_intro.start();
     			});
 
     			current = true;
     		},
     		o: function outro(local) {
-    			if (div1_intro) div1_intro.invalidate();
-    			div1_outro = create_out_transition(div1, fly, { x: -100, duration: 300 });
+    			if (div2_intro) div2_intro.invalidate();
+    			div2_outro = create_out_transition(div2, fly, { x: -100, duration: 300 });
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div1);
-    			if (detaching && div1_outro) div1_outro.end();
+    			if (detaching) detach_dev(div2);
+    			if (detaching && div2_outro) div2_outro.end();
     		}
     	};
 
@@ -5438,14 +5393,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$4.name,
     		type: "if",
-    		source: "(95:0) {#if currentStep == 1}",
+    		source: "(98:0) {#if currentStep == 1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (129:4) {:else}
+    // (127:4) {:else}
     function create_else_block$3(ctx) {
     	let t;
 
@@ -5465,14 +5420,14 @@ var app = (function () {
     		block,
     		id: create_else_block$3.name,
     		type: "else",
-    		source: "(129:4) {:else}",
+    		source: "(127:4) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (127:4) {#if currentStep === totalSteps}
+    // (125:4) {#if currentStep === totalSteps}
     function create_if_block$5(ctx) {
     	let t;
 
@@ -5492,7 +5447,7 @@ var app = (function () {
     		block,
     		id: create_if_block$5.name,
     		type: "if",
-    		source: "(127:4) {#if currentStep === totalSteps}",
+    		source: "(125:4) {#if currentStep === totalSteps}",
     		ctx
     	});
 
@@ -5574,18 +5529,18 @@ var app = (function () {
     			if_block1.c();
     			t2 = space();
     			button = element("button");
-    			attr_dev(div, "class", "step-counter svelte-jco136");
-    			add_location(div, file$a, 87, 2, 1421);
-    			add_location(header, file$a, 86, 0, 1372);
-    			attr_dev(main, "class", "svelte-jco136");
-    			add_location(main, file$a, 93, 0, 1621);
-    			attr_dev(span, "class", "next-text svelte-jco136");
-    			add_location(span, file$a, 125, 2, 3538);
+    			attr_dev(div, "class", "step-counter svelte-1x1gfdu");
+    			add_location(div, file$a, 90, 2, 1486);
+    			add_location(header, file$a, 89, 0, 1437);
+    			attr_dev(main, "class", "svelte-1x1gfdu");
+    			add_location(main, file$a, 96, 0, 1686);
+    			attr_dev(span, "class", "next-text svelte-1x1gfdu");
+    			add_location(span, file$a, 123, 2, 3242);
     			attr_dev(button, "type", "button");
     			attr_dev(button, "name", "button");
-    			attr_dev(button, "class", "next-button svelte-jco136");
-    			add_location(button, file$a, 132, 2, 3684);
-    			add_location(footer, file$a, 124, 0, 3489);
+    			attr_dev(button, "class", "next-button svelte-1x1gfdu");
+    			add_location(button, file$a, 130, 2, 3388);
+    			add_location(footer, file$a, 122, 0, 3193);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -5855,7 +5810,7 @@ var app = (function () {
     	return block;
     }
 
-    // (39:29)
+    // (39:29) 
     function create_if_block_2$4(ctx) {
     	let div;
     	let span;
@@ -5903,7 +5858,7 @@ var app = (function () {
     	return block;
     }
 
-    // (35:29)
+    // (35:29) 
     function create_if_block_1$5(ctx) {
     	let div;
     	let span;
@@ -6404,7 +6359,7 @@ var app = (function () {
     	return block;
     }
 
-    // (68:39)
+    // (68:39) 
     function create_if_block_3$2(ctx) {
     	let dialoguebox;
     	let current;
@@ -6450,7 +6405,7 @@ var app = (function () {
     	return block;
     }
 
-    // (64:42)
+    // (64:42) 
     function create_if_block_2$5(ctx) {
     	let dialoguebox;
     	let current;
